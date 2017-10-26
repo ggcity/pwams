@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Chrome against localhost, with sourcemaps",
+            "type": "chrome",
+            "runtimeExecutable": "/opt/google/chrome/chrome",
+            "request": "launch",
+            "url": "http://localhost:4200/",
+            "runtimeArgs": [
+                "--disable-session-crashed-bubble",
+                "--disable-infobars",
+                "--disable-application-cache",
+                "--media-cache-size=1",
+                "--disk-cache-size=1"
+            ],
+            "userDataDir": "/tmp/zebracore-chrome-profile",
+            "diagnosticLogging": true,
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}",
+            "sourceMapPathOverrides": {
+                "webpack:///*": "/*"
+            }
+        },
+        {
+            "name": "Attach to Chrome, with sourcemaps",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "sourceMaps": true,
+            /*"diagnosticLogging": true,*/
+            "webRoot": "${workspaceRoot}",
+            "url": "http://localhost:4200/*",
+            "sourceMapPathOverrides": {
+                "webpack:///*": "/*"
+            }
+        }
+    ]
+}

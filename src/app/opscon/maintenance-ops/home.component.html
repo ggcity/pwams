@@ -1,0 +1,6 @@
+<section class='list-group list-group-flush'>
+  <a class='list-group-item list-group-item-action flex-column align-items-start' [routerLink]="'../' + op.machineName" *ngFor='let op of availableOperations'>
+    <h4 class='mb-1'>{{ op.name | titleize }}</h4>
+    <p class='mb-1'>{{ op.description }}</p>
+  </a>
+</section>

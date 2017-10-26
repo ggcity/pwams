@@ -1,0 +1,11 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "files.exclude": {
+        "**/.git": true,
+        "**/*.js.map": true,
+        "**/*.js": {"when": "$(basename).ts"},
+        ".vscode": true,
+        "node_modules": true
+    },
+    "editor.tabSize": 2
+}

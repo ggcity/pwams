@@ -1,0 +1,99 @@
+{
+  "mapconfig": {
+    "view": {
+      "center": [
+        0,
+        0
+      ],
+      "zoom": 25,
+      "projection": "EPSG:3857"
+    },
+    "loadTilesWhileAnimating": false,
+    "loadTilesWhileInteracting": false,
+    "baseLayers": [],
+    "defaultDataset": "test-dataset-1",
+    "datasets": {
+      "test-dataset-1": [
+        {
+          "name": "Test Layer 1",
+          "machineName": "test-layer-1",
+          "layerType": "vector",
+          "source": {
+            "type": "GeoJSON",
+            "url": "http://localhost:3000/layers/test-layer-1"
+          },
+          "style": {
+            "styleType": "point",
+            "radius": 10,
+            "fill": [
+              145,
+              15,
+              15,
+              0.8
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "layers": [
+    {
+      "id": "test-layer-1",
+      "type": "FeatureCollection",
+      "totalFeatures": 3,
+      "features": [
+        {
+          "type": "Feature",
+          "id": "test-point-1",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              0,
+              0
+            ]
+          },
+          "geometry_name": "shape",
+          "properties": {
+            "foo": 1
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "test-point-2",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              1,
+              1
+            ]
+          },
+          "geometry_name": "shape",
+          "properties": {
+            "foo": 2
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "test-point-3",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              2,
+              2
+            ]
+          },
+          "geometry_name": "shape",
+          "properties": {
+            "foo": 3
+          }
+        }
+      ],
+      "crs": {
+        "type": "name",
+        "properties": {
+          "name": "urn:ogc:def:crs:EPSG::3857"
+        }
+      }
+    }
+  ]
+}

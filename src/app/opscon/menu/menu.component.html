@@ -1,0 +1,56 @@
+<section id='menu' class='opscon card'>
+  <header class='opscon-header card-header bg-primary text-white'>
+    <h1>
+      Menu
+      <a routerLink='/' class='close-button'>
+        <i class='fa fa-close'></i>
+      </a>
+    </h1>
+  </header>
+
+  <section class='opscon-block card-block' style='font-size: 1.2em'>
+    <ul class='datasets nav nav-pills flex-column'>
+      <li class='nav-item' *ngFor='let dataset of availableDatasets'>
+        <a href='javascript:void(0)' class='nav-link' (click)='setCurrentDataset(dataset)'>
+          <i class='fa fa-fw fa-lg fa-database'></i>
+          {{ dataset | titleize }}
+          <span class='badge badge-warning' [hidden]='currentDataset !== dataset'>Active</span>
+        </a>
+      </li>
+    </ul>
+
+    <hr>
+
+    <ul class='nav nav-pills flex-column'>
+      <li class='nav-item'>
+        <a href='#' class='nav-link'>
+          <i class='fa fa-fw fa-lg fa-list'></i>
+          Inspection Log
+        </a>
+      </li>
+      <li class='nav-item'>
+        <a href='#' class='nav-link'>
+          <i class='fa fa-fw fa-lg fa-file-text-o'></i>
+          Reports
+        </a>
+      </li>
+    </ul>
+
+    <hr>
+
+    <ul class='nav nav-pills flex-column'>
+      <li class='nav-item'>
+        <a href='#' class='nav-link'>
+          <i class='fa fa-fw fa-lg fa-cogs'></i>
+          Settings
+        </a>
+      </li>
+      <li class='nav-item'>
+        <a href='#' class='nav-link'>
+          <i class='fa fa-fw fa-lg fa-sign-out'></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </section>
+</section>

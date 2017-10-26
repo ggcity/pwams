@@ -1,0 +1,37 @@
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="radio"] + label::before,
+input[type="checkbox"] + label::before {
+  color: #007ebd;
+  display: inline-block;
+  font-size: 1.3em;
+  font-family: 'FontAwesome';
+  padding-right: 8px;
+  vertical-align: -10%;
+  width: 25px;
+}
+
+input[type="checkbox"] + label::before {
+  content: "\f096";
+}
+
+input[type="checkbox"]:checked + label::before {
+  content: "\f046";
+}
+
+input[type="radio"] + label::before {
+  content: "\f10c";
+}
+
+input[type="radio"]:checked + label::before {
+  content: "\f111";
+}
+
+.checkbox label, .radio label {
+  cursor: pointer;
+  padding-left: 0;
+  font-size: 1.2em;
+}

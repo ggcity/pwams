@@ -1,0 +1,54 @@
+.opscon-host {
+  position: absolute;
+  z-index: 150;
+  top: 0;
+  bottom: 0;
+  left: 0px;
+  width: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.opscon,
+.opscon > .opscon-header {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.opscon > .opscon-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.opscon > .opscon-header > h1 {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.opscon > .opscon-header .close-button {
+  float: right;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .opscon-host {
+    width: 100%;
+    right: 0;
+    left: -100%;
+  }
+}
+
+
+.tooltip-inner {
+  background-color: #222;
+  border-radius: 3px;
+  border: none;
+  padding: 7px 14px;
+}
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: #222;
+}

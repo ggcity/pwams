@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "ol": "file:custom_typings/ol.d.ts",
+    "ol-extended": "file:custom_typings/ol-extended.d.ts"
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "mapconfig": {
+    "view": {
+      "center": [
+        -13131247,
+        3999299
+      ],
+      "zoom": 13,
+      "projection": "EPSG:3857"
+    },
+    "loadTilesWhileAnimating": true,
+    "loadTilesWhileInteracting": true,
+    "baseLayers": [
+      {
+        "name": "Garden Grove Basemap",
+        "layerType": "tile",
+        "source": {
+          "type": "xyz",
+          "url": "//www.ci.garden-grove.ca.us/tileserver/styles/gg-basic/{z}/{x}/{y}.png"
+        }
+      }
+    ],
+    "defaultDataset": "sewer",
+    "datasets": {
+      "sewer": [
+        {
+          "name": "Gravity Main",
+          "machineName": "ssgravitymain",
+          "layerType": "vector",
+          "source": {
+            "type": "WFS",
+            "url": "http://52.40.215.70:8080/geoserver/dev/ows",
+            "typeName": "dev:ssgravitymain"
+          },
+          "style": {
+            "styleType": "line",
+            "stroke": {
+              "width": 4,
+              "color": [
+                50,
+                150,
+                120,
+                0.85
+              ]
+            }
+          },
+          "maxResolution": 3.5
+        },
+        {
+          "name": "Manholes",
+          "machineName": "ssmanhole",
+          "layerType": "vector",
+          "source": {
+            "type": "WFS",
+            "url": "http://52.40.215.70:8080/geoserver/dev/ows",
+            "typeName": "dev:ssmanhole"
+          },
+          "style": {
+            "styleType": "point",
+            "radius": 6,
+            "fill": [
+              130,
+              50,
+              150,
+              0.8
+            ]
+          },
+          "maxResolution": 1.2
+        }
+      ],
+      "storm_water": [
+        {
+          "name": "Storm Water Gravity Main",
+          "machineName": "swgravitymain",
+          "layerType": "vector",
+          "source": {
+            "type": "WFS",
+            "url": "http://52.40.215.70:8080/geoserver/dev/ows",
+            "typeName": "dev:swgravitymain"
+          },
+          "style": {
+            "styleType": "line",
+            "stroke": {
+              "width": 4,
+              "color": [
+                240,
+                120,
+                60,
+                0.85
+              ]
+            }
+          },
+          "maxResolution": 3.5
+        },
+        {
+          "name": "Storm Water Manholes",
+          "machineName": "swmanhole",
+          "layerType": "vector",
+          "source": {
+            "type": "WFS",
+            "url": "http://52.40.215.70:8080/geoserver/dev/ows",
+            "typeName": "dev:swmanhole"
+          },
+          "style": {
+            "styleType": "point",
+            "radius": 6,
+            "fill": [
+              145,
+              15,
+              15,
+              0.8
+            ]
+          },
+          "maxResolution": 1.2
+        }
+      ],
+      "water": [
+        {
+          "name": "Gravity Main JSON",
+          "machineName": "ssgravitymain",
+          "layerType": "vector",
+          "source": {
+            "type": "GeoJSON",
+            "url": "http://localhost:3000/layers/ssgravitymain"
+          },
+          "style": {
+            "styleType": "line",
+            "stroke": {
+              "width": 4,
+              "color": [
+                50,
+                150,
+                120,
+                0.85
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "layers": [
+    {
+      "id": "ssgravitymain",
+      "type": "FeatureCollection",
+      "totalFeatures": 393,
+      "features": [
+        {
+          "type": "Feature",
+          "id": "ssgravitymain.6996",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -1.31288667055043E7,
+                4001149.64405616
+              ],
+              [
+                -1.312886601347352E7,
+                4001095.35377751
+              ]
+            ]
+          },
+          "geometry_name": "shape",
+          "properties": {
+            "facilityid": "6257",
+            "installdate": "1955-01-01T00:00:00Z",
+            "material": "VC",
+            "diameter": 8,
+            "mainshape": null,
+            "linedyear": null,
+            "linertype": null,
+            "frommh": "12912",
+            "tomh": "12965",
+            "watertype": null,
+            "enabled": null,
+            "activeflag": null,
+            "ownedby": null,
+            "maintby": null,
+            "sumflow": null,
+            "lastupdate": null,
+            "lasteditor": null,
+            "downelev": null,
+            "upelev": null,
+            "slope": null,
+            "pipe_type": null,
+            "start_covelev": 111.56,
+            "end_covelev": 111.29,
+            "start_invelev": 103.56,
+            "end_invelev": 103.29,
+            "comments": null,
+            "descript": "PNE28900",
+            "gg_zone": "existing",
+            "from_inv": 103.56,
+            "to_inv": 103.29,
+            "length": 133,
+            "oid_1": null,
+            "pipe_atlas": "SPP070026",
+            "pipeus_atl": "COP070001",
+            "pipeds_atl": "MHP070001",
+            "datasource": null,
+            "activityid": null,
+            "lastactivity": null,
+            "datestamp": null,
+            "optime": null,
+            "operatedby": null,
+            "computername": null,
+            "globalid": "{104537DF-910C-4FCC-913D-FBCB5A9D4F5C}",
+            "gdb_geomattr_data": null
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "ssgravitymain.7000",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -1.312854399071287E7,
+                4000471.66150421
+              ],
+              [
+                -1.312858941313885E7,
+                4000471.23927159
+              ],
+              [
+                -1.312861212723505E7,
+                4000471.02804145
+              ],
+              [
+                -1.312866812433205E7,
+                4000470.50708664
+              ]
+            ]
+          },
+          "geometry_name": "shape",
+          "properties": {
+            "facilityid": "6261",
+            "installdate": "1951-01-01T00:00:00Z",
+            "material": "VC",
+            "diameter": 15,
+            "mainshape": null,
+            "linedyear": null,
+            "linertype": null,
+            "frommh": "12922",
+            "tomh": "12923",
+            "watertype": null,
+            "enabled": null,
+            "activeflag": null,
+            "ownedby": null,
+            "maintby": null,
+            "sumflow": null,
+            "lastupdate": null,
+            "lasteditor": null,
+            "downelev": null,
+            "upelev": null,
+            "slope": null,
+            "pipe_type": null,
+            "start_covelev": 104.52,
+            "end_covelev": 103.51,
+            "start_invelev": 96.52,
+            "end_invelev": 95.51,
+            "comments": null,
+            "descript": "PNE27022",
+            "gg_zone": "existing",
+            "from_inv": 96.52,
+            "to_inv": 95.51,
+            "length": 325,
+            "oid_1": null,
+            "pipe_atlas": "SPP090024",
+            "pipeus_atl": "MHP090022",
+            "pipeds_atl": "MHP090023",
+            "datasource": null,
+            "activityid": null,
+            "lastactivity": null,
+            "datestamp": null,
+            "optime": null,
+            "operatedby": null,
+            "computername": null,
+            "globalid": "{0A6F539E-45D8-4D97-A502-CB39905A4183}",
+            "gdb_geomattr_data": null
+          }
+        }
+      ],
+      "crs": {
+        "type": "name",
+        "properties": {
+          "name": "urn:ogc:def:crs:EPSG::3857"
+        }
+      }
+    }
+  ]
+}
