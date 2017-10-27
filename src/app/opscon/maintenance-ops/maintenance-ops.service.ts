@@ -16,6 +16,7 @@ export class MaintenanceOpsService {
   getAvailableOperations (): Promise<Array<Operation>> {
     return Promise.resolve([
       { name: 'Redline', machineName: 'redline', description: 'Markup map for edits' },
+      { name: 'Hot Spot Cleaning', machineName: 'hot-spot-cleaning', description: 'Update hot spots cleaning record'},
       { name: 'Line Cleaning', machineName: 'line-cleaning', description: 'Report line cleaning operation' },
       { name: 'Manhole Inspection', machineName: 'manhole-inspection', description: 'Inspect manholes for proper conditions and vermin' },
       { name: 'Spills', machineName: 'spills', description: 'Report chemical spills and actions taken' }

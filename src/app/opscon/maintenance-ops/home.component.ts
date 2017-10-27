@@ -22,13 +22,13 @@ import { Operation } from './operation';
         style({ transform: 'translateX(-100%)' }),
         animate('150ms linear')
       ]),
-      transition('* => void', 
+      transition('* => void',
         animate('150ms linear', style({ transform: 'translateX(-100%)' }))
       )
     ])
   ]
 })
-export class HomeComponent { 
+export class HomeComponent {
   public availableOperations: Array<Operation>;
 
   constructor (

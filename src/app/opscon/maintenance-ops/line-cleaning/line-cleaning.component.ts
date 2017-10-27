@@ -17,6 +17,8 @@ import { LineCleaning } from './line-cleaning.model';
 
 import { Subscription } from 'rxjs/Subscription';
 
+import { LaddaDirective } from '@zebracore/core';
+
 @Component({
   templateUrl: 'line-cleaning.component.html',
   host: {
@@ -42,8 +44,6 @@ export class LineCleaningComponent implements OnDestroy, OnInit {
   countSubscription: Subscription;
 
   ngOnInit () {
-    Ladda.bind('#line-cleaning-submit-btn');
-
     // Set custom layer filter
     this.selectService.setLayerFilter(this.layerFilter);
 
