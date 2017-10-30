@@ -9,7 +9,9 @@ export class LineCleaning {
     public cleaned_on?: Date,
     public footage?: number,
     public percent_completed?: number,
-    public remarks?: string
+    public remarks?: string,
+    public cleaned_by?: string,
+    public pipes?: Array<Number>
   ) {
 
   }

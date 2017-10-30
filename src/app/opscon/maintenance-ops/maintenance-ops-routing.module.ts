@@ -6,11 +6,12 @@ import { MaintenanceOpsComponent } from './maintenance-ops.component';
 import { HomeComponent } from './home.component';
 
 import { LaddaDirective } from '@zebracore/core';
-
 import { RedlineComponent } from '@zebracore/redline-ops';
-
-import { LineCleaningComponent } from './line-cleaning/line-cleaning.component';
-
+import {
+  LineCleaningIndexComponent,
+  NewLineCleaningComponent,
+  LineCleaningReportsComponent
+} from './line-cleaning';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
@@ -23,7 +24,9 @@ import { SharedModule } from '../../shared/shared.module';
         { path: 'home', component: HomeComponent },
         { path: 'redline', component: RedlineComponent },
 
-        { path: 'line-cleaning', component: LineCleaningComponent }
+        { path: 'line-cleaning', component: LineCleaningIndexComponent },
+        { path: 'line-cleaning/new', component: NewLineCleaningComponent },
+        { path: 'line-cleaning/reports', component: LineCleaningReportsComponent }
       ]}
     ])
   ],
@@ -33,7 +36,9 @@ import { SharedModule } from '../../shared/shared.module';
     LaddaDirective,
     RedlineComponent,
 
-    LineCleaningComponent
+    LineCleaningIndexComponent,
+    NewLineCleaningComponent,
+    LineCleaningReportsComponent
   ],
   exports: [
     RouterModule

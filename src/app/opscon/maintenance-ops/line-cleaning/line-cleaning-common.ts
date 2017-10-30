@@ -1,7 +1,7 @@
 import {
-  Component,
   OnInit,
-  OnDestroy
+  OnDestroy,
+  HostBinding
 } from '@angular/core';
 
 import {
@@ -12,34 +12,13 @@ import {
 }  from '@angular/animations';
 
 import { SelectService, LoggerService } from '../../../shared/services';
-
-import { LineCleaning } from './line-cleaning.model';
-
 import { Subscription } from 'rxjs/Subscription';
 
-import { LaddaDirective } from '@zebracore/core';
+export class LineCleaningCommon implements OnDestroy, OnInit {
+  @HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('class.maint-ops-route') maintOpsRoute = true;
 
-@Component({
-  templateUrl: 'line-cleaning.component.html',
-  host: {
-    '[@routeAnimation]': 'true',
-    '[class.maint-ops-route]': 'true'
-  },
-  animations: [
-    trigger('routeAnimation', [
-      transition('void => *', [
-        style({ transform: 'translateX(100%)' }),
-        animate('150ms linear')
-      ]),
-      transition('* => void',
-        animate('150ms linear', style({ transform: 'translateX(100%)' }))
-      )
-    ])
-  ]
-})
-export class LineCleaningComponent implements OnDestroy, OnInit {
-  model: LineCleaning;
-  selectedTotal: number = 0;
+  selectedTotal = 0;
   selector: ol.interaction.Select;
   countSubscription: Subscription;
 
@@ -60,10 +39,9 @@ export class LineCleaningComponent implements OnDestroy, OnInit {
   }
 
   constructor (
-    private selectService: SelectService,
-    private logger: LoggerService
+    public selectService: SelectService,
+    public logger: LoggerService
   ) {
-    this.model = new LineCleaning();
   }
 
   private layerFilter (feature: ol.Feature, layer: ol.layer.Layer): boolean {
