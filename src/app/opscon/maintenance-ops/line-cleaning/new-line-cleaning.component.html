@@ -1,5 +1,5 @@
 <section class='card-block'>
-  <form novalidate>
+  <form>
     <fieldset class='checkbox'>
       <input id='line-cleaning-grease' type='checkbox' name='grease' [(ngModel)]='model.grease' />
       <label for='line-cleaning-grease'>Grease</label>
@@ -27,7 +27,7 @@
   
     <fieldset class='form-group'>
       <label for='line-cleaning-cleaned_on'>Cleaned on</label>
-      <input id='line-cleaning-cleaned-on' class='form-control' type='date' name='cleaned_on' [(ngModel)]='model.cleaned_on' />
+      <input id='line-cleaning-cleaned-on' class='form-control' type='date' name='cleaned_on' required [(ngModel)]='model.cleaned_on' />
     </fieldset>
   
     <fieldset class='form-group'>
@@ -42,11 +42,16 @@
   
     <fieldset class='form-group'>
       <label for='line-cleaning-remarks'>Remarks</label>
-      <textarea id='line-cleaning-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks'></textarea>
+      <textarea id='line-cleaning-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+  
+    <fieldset class='form-group'>
+      <label for='line-cleaning-cleaned-by'>Cleaned by</label>
+      <input id='line-cleaning-cleaned-by' class='form-control' type='text' name='cleaned_by' [(ngModel)]='model.cleaned_by' />
     </fieldset>
     
     <p>
-      <button id='line-cleaning-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0'>
+      <button id='line-cleaning-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="saveLineCleaning($event)">
         <i class='fa fa-arrow-circle-right fa-lg'></i>
         Record line cleaning
       </button>

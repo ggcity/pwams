@@ -19,8 +19,10 @@ export class LineCleaningCommon implements OnDestroy, OnInit {
   @HostBinding('class.maint-ops-route') maintOpsRoute = true;
 
   selectedTotal = 0;
+  selectedFeatures: ol.Collection<ol.Feature>;
   selector: ol.interaction.Select;
   countSubscription: Subscription;
+  featuresSubscription: Subscription;
 
   ngOnInit () {
     // Set custom layer filter
@@ -28,6 +30,7 @@ export class LineCleaningCommon implements OnDestroy, OnInit {
 
     // Subscribe to features count
     this.countSubscription = this.selectService.selectCountObservable.subscribe(count => this.selectedTotal = count);
+    this.featuresSubscription = this.selectService.selectionObservable.subscribe(features => this.selectedFeatures = features);
 
     // Zoom to extent of current selection
     this.selectService.zoomToSelection(true);

@@ -13,6 +13,6 @@ export class LineCleaning {
     public cleaned_by?: string,
     public pipes?: Array<Number>
   ) {
-
+    if (this.pipes === undefined || this.pipes === null) this.pipes = [];
   }
 }

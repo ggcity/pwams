@@ -1,6 +1,8 @@
 import {
   Component
 } from '@angular/core';
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 import {
   trigger,
@@ -32,9 +34,24 @@ export class NewLineCleaningComponent extends LineCleaningCommon {
 
   constructor (
     public selectService: SelectService,
-    public logger: LoggerService
+    public logger: LoggerService,
+    public http: Http,
+    public router: Router
   ) {
     super(selectService, logger);
     this.model = new LineCleaning();
+  }
+
+  saveLineCleaning (e) {
+    e.target.disabled = true;
+
+    this.selectedFeatures.forEach(f => {
+      let att = f.getProperties();
+      this.model.pipes.push(att.facilityid);
+    });
+
+    this.http.post('http://localhost:3000/line-cleanings', this.model).subscribe(
+      r => this.router.navigateByUrl('/maintenance-ops/line-cleaning')
+    );
   }
 }
