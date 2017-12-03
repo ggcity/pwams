@@ -50,7 +50,7 @@ export class NewLineCleaningComponent extends LineCleaningCommon {
       this.model.pipes.push(att.facilityid);
     });
 
-    this.http.post('http://localhost:3000/line-cleanings', this.model).subscribe(
+    this.http.post('//ch.ci.garden-grove.ca.us/pwams-api/line-cleanings', this.model).subscribe(
       r => this.router.navigateByUrl('/maintenance-ops/line-cleaning')
     );
   }

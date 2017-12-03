@@ -43,7 +43,7 @@ export class LineCleaningIndexComponent extends LineCleaningCommon {
   }
 
   private getLineCleanings (): Promise<any> {
-    return this.http.get('http://localhost:3000/line-cleanings.json')
+    return this.http.get('//ch.ci.garden-grove.ca.us/pwams-api/line-cleanings.json')
            .toPromise();
   }
 }

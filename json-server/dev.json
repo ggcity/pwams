@@ -15,8 +15,8 @@
         "name": "Garden Grove Basemap",
         "layerType": "tile",
         "source": {
-          "type": "osm",
-          "url": "https://www.ci.garden-grove.ca.us/tileserver/styles/gg-basic/{z}/{x}/{y}.png"
+          "type": "xyz",
+          "url": "//www.ci.garden-grove.ca.us/tileserver/styles/gg-basic/{z}/{x}/{y}.png"
         }
       }
     ],
@@ -43,8 +43,7 @@
                 0.85
               ]
             }
-          },
-          "maxResolution": 3.5
+          }
         },
         {
           "name": "Manholes",
@@ -143,8 +142,6 @@
   "line-cleanings":
 [
  {"id":6,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":131.00,"percent_completed":null,"remarks":"Ran line 3 times heavy grit","cleaned_by":"ernier jessev","pipes":[11,10]}, 
- {"id":7,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":150.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[6539,6539,4033]}, 
- {"id":8,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":165.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[5259,5259]}, 
  {"id":9,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":200.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[5258,5256,5256,5258,6537]}, 
  {"id":10,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":245.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[5257,5257]}, 
  {"id":11,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-03-09T00:00:00","footage":300.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[5946,3730]}, 

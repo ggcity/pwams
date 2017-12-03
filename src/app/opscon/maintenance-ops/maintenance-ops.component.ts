@@ -26,7 +26,7 @@ import {
   `,
   styles: [`
     #maint-ops {
-      height: 100%;
+      height: 150%;
     }
 
     /deep/ .maint-ops-route {
