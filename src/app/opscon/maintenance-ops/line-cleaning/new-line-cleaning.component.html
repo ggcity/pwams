@@ -39,15 +39,15 @@
       <label for='line-cleaning-percent-completed'>Percent completed</label>
       <input id='line-cleaning-percent-completed' class='form-control' type='number' name='percent_completed' [(ngModel)]='model.percent_completed' />
     </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='line-cleaning-cleaned-by'>Cleaned by</label>
+      <input id='line-cleaning-cleaned-by' class='form-control' type='text' name='cleaned_by' [(ngModel)]='model.cleaned_by' />
+    </fieldset>
   
     <fieldset class='form-group'>
       <label for='line-cleaning-remarks'>Remarks</label>
       <textarea id='line-cleaning-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks' required></textarea>
-    </fieldset>
-  
-    <fieldset class='form-group'>
-      <label for='line-cleaning-cleaned-by'>Cleaned by</label>
-      <input id='line-cleaning-cleaned-by' class='form-control' type='text' name='cleaned_by' [(ngModel)]='model.cleaned_by' />
     </fieldset>
     
     <p>

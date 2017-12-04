@@ -1,0 +1,41 @@
+<section class='card-block'>
+  <form>
+    <fieldset class='form-group'>
+      <label for='pest-treatment-exterminator'>Exterminator</label>
+      <input id='pest-treatment-exterminator' class='form-control' type='text' name='exterminator' [(ngModel)]='model.exterminator' />
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='pest-treatment-treatment'>Treatment</label>
+      <select id='pest-treatment-treatment' class='form-control' name='treatment' [(ngModel)]='model.treatment'>
+        <option>RAT BAIT</option>
+        <option>ROACH SPRAY</option>
+      </select>
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='pest-treatment-treated-on'>Treated on</label>
+      <input id='pest-treatment-treated-on' class='form-control' type='date' name='treated_on' required [(ngModel)]='model.treated_on' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='pest-treatment-remarks'>Remarks</label>
+      <textarea id='pest-treatment-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button id='pest-treatment-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record pest treatment
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>
