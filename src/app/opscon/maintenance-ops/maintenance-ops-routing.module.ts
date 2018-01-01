@@ -49,7 +49,7 @@ import { SharedModule } from '../../shared/shared.module';
             data: { title: 'Line Cleaning', previous: '/maintenance-ops/line-cleaning' }
           },
 
-          { path: 'sewer-repair', component: NewSewerRepairComponent },
+          { path: 'sewer-repair', component: NewSewerRepairComponent, data: { title: 'New Sewer Repair', previous: '/maintenance-ops' } },
 
           { path: 'root-cutting', component: NewRootCuttingComponent },
 

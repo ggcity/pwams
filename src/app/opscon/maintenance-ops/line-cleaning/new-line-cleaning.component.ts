@@ -8,13 +8,6 @@ import {
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
-import {
-  trigger,
-  style,
-  transition,
-  animate
-}  from '@angular/animations';
-
 import { Subscription } from 'rxjs/Subscription';
 
 import config from '../../../app.config';
@@ -23,18 +16,7 @@ import { LineCleaning } from './line-cleaning.model';
 import { LineCleaningCommon } from './line-cleaning-common';
 
 @Component({
-  templateUrl: 'new-line-cleaning.component.html',
-  animations: [
-    trigger('routeAnimation', [
-      transition('void => *', [
-        style({ transform: 'translateX(-100%)' }),
-        animate('150ms linear')
-      ]),
-      transition('* => void',
-        animate('150ms linear', style({ transform: 'translateX(-100%)' }))
-      )
-    ])
-  ]
+  templateUrl: 'new-line-cleaning.component.html'
 })
 export class NewLineCleaningComponent extends LineCleaningCommon implements OnInit, OnDestroy {
   model: LineCleaning;

@@ -27,18 +27,23 @@ import { NavigationService } from '../../shared/services/navigation.service';
         </h1>
       </header>
 
-      <section>
+      <section id='maint-ops-outlet'>
         <router-outlet></router-outlet>
       </section>
     </section>
   `,
   styles: [`
     #maint-ops {
-      height: 150%;
+      height: 100%;
+    }
+
+    #maint-ops-outlet {
+      overflow: auto;
     }
 
     /deep/ .maint-ops-route {
-      position: absolute;
+      /* ditching route animation for better scroll ... for now */
+      /* position: absolute; */
     }
   `],
   animations: [

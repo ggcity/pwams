@@ -9,13 +9,6 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 
-import {
-  trigger,
-  style,
-  transition,
-  animate
-}  from '@angular/animations';
-
 import Feature from 'ol/feature';
 import Polygon from 'ol/geom/polygon';
 import VectorSource from 'ol/source/vector';
@@ -30,18 +23,7 @@ import { LineCleaning } from './line-cleaning.model';
 import { LineCleaningCommon } from './line-cleaning-common';
 
 @Component({
-  templateUrl: 'line-cleaning-detail.component.html',
-  animations: [
-    trigger('routeAnimation', [
-      transition('void => *', [
-        style({ transform: 'translateX(100%)' }),
-        animate('150ms linear')
-      ]),
-      transition('* => void',
-        animate('150ms linear', style({ transform: 'translateX(100%)' }))
-      )
-    ])
-  ]
+  templateUrl: 'line-cleaning-detail.component.html'
 })
 export class LineCleaningDetailComponent extends LineCleaningCommon implements OnInit, OnDestroy {
   model: LineCleaning;
