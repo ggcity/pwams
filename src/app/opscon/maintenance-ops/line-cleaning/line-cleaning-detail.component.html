@@ -1,0 +1,53 @@
+<section class='card-block'>
+  <form #lineCleaningForm>
+    <fieldset class='checkbox'>
+      <input id='line-cleaning-grease' type='checkbox' name='line_cleaning[grease]' [(ngModel)]='model.grease' disabled />
+      <label for='line-cleaning-grease'>Grease</label>
+    </fieldset>
+  
+    <fieldset class='checkbox'>
+      <input id='line-cleaning-roots' type='checkbox' name='line_cleaning[roots]' [(ngModel)]='model.roots' disabled />
+      <label for='line-cleaning-roots'>Roots</label>
+    </fieldset>
+  
+    <fieldset class='checkbox'>
+      <input id='line-cleaning-pipe-pieces' type='checkbox' name='line_cleaning[pipe_pieces]' [(ngModel)]='model.pipe_pieces' disabled />
+      <label for='line-cleaning-pipe-pieces'>Pipe pieces</label>
+    </fieldset>
+  
+    <fieldset class='checkbox'>
+      <input id='line-cleaning-egg-shells' type='checkbox' name='line_cleaning[egg_shells]' [(ngModel)]='model.egg_shells' disabled />
+      <label for='line-cleaning-egg-shells'>Egg shells</label>
+    </fieldset>
+  
+    <fieldset class='checkbox'>
+      <input id='line-cleaning-cctv' type='checkbox' name='line_cleaning[cctv]' [(ngModel)]='model.cctv' disabled />
+      <label for='line-cleaning-cctv'>CCTV</label>
+    </fieldset>
+  
+    <fieldset class='form-group'>
+      <label for='line-cleaning-cleaned_on'>Cleaned on</label>
+      <input id='line-cleaning-cleaned-on' class='form-control' type='date' name='line_cleaning[cleaned_on]' required [(ngModel)]='model.cleaned_on' disabled />
+    </fieldset>
+  
+    <fieldset class='form-group'>
+      <label for='line-cleaning-footage'>Footage</label>
+      <input id='line-cleaning-footage' class='form-control' type='number' name='line_cleaning[footage]' [(ngModel)]='model.footage' disabled />
+    </fieldset>
+  
+    <fieldset class='form-group'>
+      <label for='line-cleaning-percent-completed'>Percent completed</label>
+      <input id='line-cleaning-percent-completed' class='form-control' type='number' name='line_cleaning[percent_completed]' [(ngModel)]='model.percent_completed' disabled />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='line-cleaning-cleaned-by'>Cleaned by</label>
+      <input id='line-cleaning-cleaned-by' class='form-control' type='text' name='line_cleaning[cleaned_by]' [(ngModel)]='model.cleaned_by' disabled />
+    </fieldset>
+  
+    <fieldset class='form-group'>
+      <label for='line-cleaning-remarks'>Remarks</label>
+      <textarea id='line-cleaning-remarks' class='form-control' name='line_cleaning[remarks]' [(ngModel)]='model.remarks' disabled></textarea>
+    </fieldset>
+  </form>
+</section>

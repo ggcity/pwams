@@ -1,4 +1,6 @@
 import {
+  OnInit,
+  OnDestroy,
   Component
 } from '@angular/core';
 
@@ -9,7 +11,10 @@ import {
   animate
 }  from '@angular/animations';
 
-import { SelectService, LoggerService } from '../../../shared/services';
+import Heatmap from 'ol/layer/heatmap';
+import VectorSource from 'ol/source/vector';
+
+import { MapService, SelectService, LoggerService } from '../../../shared/services';
 import { LineCleaning } from './line-cleaning.model';
 import { LineCleaningCommon } from './line-cleaning-common';
 
@@ -27,11 +32,18 @@ import { LineCleaningCommon } from './line-cleaning-common';
     ])
   ]
 })
-export class LineCleaningReportsComponent extends LineCleaningCommon {
+export class LineCleaningReportsComponent extends LineCleaningCommon implements OnInit, OnDestroy {
   model: LineCleaning;
   lineCleanings: Array<LineCleaning>;
 
+  ngOnInit () {
+    this.mapService.resetView();
+  }
+
+  ngOnDestroy () { }
+
   constructor (
+    public mapService: MapService,
     public selectService: SelectService,
     public logger: LoggerService
   ) {

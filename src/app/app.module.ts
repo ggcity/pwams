@@ -10,22 +10,23 @@ import { MapModule }     from './map/map.module';
 import { AppComponent }     from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
-import { LoggerService } from './shared/services/logger.service';
+import { LoggerService, NavigationService } from './shared/services';
 
 @NgModule({
-  imports: [ 
+  imports: [
     BrowserModule,
     HttpModule,
     MapModule,
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  declarations: [ 
+  declarations: [
     AppComponent,
     ToolbarComponent
   ],
   providers: [
-    LoggerService
+    LoggerService,
+    NavigationService
   ],
   bootstrap: [ AppComponent ]
 })

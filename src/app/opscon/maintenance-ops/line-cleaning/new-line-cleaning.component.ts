@@ -1,5 +1,9 @@
 import {
-  Component
+  OnInit,
+  OnDestroy,
+  Component,
+  ElementRef,
+  ViewChild
 } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
@@ -11,6 +15,9 @@ import {
   animate
 }  from '@angular/animations';
 
+import { Subscription } from 'rxjs/Subscription';
+
+import config from '../../../app.config';
 import { SelectService, LoggerService } from '../../../shared/services';
 import { LineCleaning } from './line-cleaning.model';
 import { LineCleaningCommon } from './line-cleaning-common';
@@ -20,17 +27,44 @@ import { LineCleaningCommon } from './line-cleaning-common';
   animations: [
     trigger('routeAnimation', [
       transition('void => *', [
-        style({ transform: 'translateX(100%)' }),
+        style({ transform: 'translateX(-100%)' }),
         animate('150ms linear')
       ]),
       transition('* => void',
-        animate('150ms linear', style({ transform: 'translateX(100%)' }))
+        animate('150ms linear', style({ transform: 'translateX(-100%)' }))
       )
     ])
   ]
 })
-export class NewLineCleaningComponent extends LineCleaningCommon {
+export class NewLineCleaningComponent extends LineCleaningCommon implements OnInit, OnDestroy {
   model: LineCleaning;
+
+  selectedTotal = 0;
+  selectedFeatures: ol.Collection<ol.Feature>;
+  selector: ol.interaction.Select;
+  countSubscription: Subscription;
+  featuresSubscription: Subscription;
+
+  @ViewChild('form') form: ElementRef;
+  @ViewChild('submitBtn') submitBtn: ElementRef;
+
+  ngOnInit () {
+    // Set custom layer filter
+    this.selectService.setLayerFilter(this.layerFilter);
+
+    // Subscribe to features count
+    this.countSubscription = this.selectService.selectCountObservable.subscribe(count => this.selectedTotal = count);
+    this.featuresSubscription = this.selectService.selectionObservable.subscribe(features => this.selectedFeatures = features);
+
+    // Zoom to extent of current selection
+    this.selectService.zoomToSelection(true);
+  }
+
+  ngOnDestroy () {
+    this.selectService.restoreLayerFilter();
+    this.countSubscription.unsubscribe();
+    this.featuresSubscription.unsubscribe();
+  }
 
   constructor (
     public selectService: SelectService,
@@ -43,15 +77,32 @@ export class NewLineCleaningComponent extends LineCleaningCommon {
   }
 
   saveLineCleaning (e) {
-    e.target.disabled = true;
+    this.submitBtn.nativeElement.disabled = true;
+    let formData = new FormData(this.form.nativeElement);
 
+    formData.append('line_cleaning[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
     this.selectedFeatures.forEach(f => {
       let att = f.getProperties();
-      this.model.pipes.push(att.facilityid);
+      formData.append('pipes[]', att.id);
     });
 
-    this.http.post('//ch.ci.garden-grove.ca.us/pwams-api/line-cleanings', this.model).subscribe(
-      r => this.router.navigateByUrl('/maintenance-ops/line-cleaning')
-    );
+    this.http
+      .post(config.apiUrl + '/line-cleanings.json', formData).toPromise()
+      .then(this.handleSaveResult.bind(this))
+      .catch(this.handleSaveError.bind(this));
+  }
+
+  handleSaveResult (response) {
+    this.router.navigateByUrl('/maintenance-ops/line-cleaning')
+  }
+
+  handleSaveError (response) {
+    let errors = response.json();
+
+    if (errors instanceof Array) {
+      alert('There was an error saving your record: ' + "\n\n" + errors.join("\n"));
+    } else {
+      alert('There was an unknown system error.');
+    }
   }
 }

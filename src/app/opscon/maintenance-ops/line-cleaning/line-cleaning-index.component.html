@@ -1,9 +1,8 @@
 <section class='card-block'>
-  <div>
-    <a [routerLink]="'./reports'" class="btn btn-lg btn-secondary">View reports</a>
+  <p>
     <a [routerLink]="'./new'" class="btn btn-lg btn-primary">New record</a>
-  </div>
-  <p>&nbsp;</p>
+    <a [routerLink]="'./reports'" class="btn btn-lg btn-secondary">View reports</a>
+  </p>
   <h4>Recent cleanings</h4>
   <div class="list-group">
     <a *ngFor='let lc of lineCleanings' [routerLink]="lc.id" class="list-group-item list-group-item-action flex-column align-items-start">

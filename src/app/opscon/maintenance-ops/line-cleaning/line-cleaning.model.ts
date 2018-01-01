@@ -11,6 +11,7 @@ export class LineCleaning {
     public percent_completed?: number,
     public remarks?: string,
     public cleaned_by?: string,
+    public extent?: [number, number, number, number],
     public pipes?: Array<Number>
   ) {
     if (this.pipes === undefined || this.pipes === null) this.pipes = [];

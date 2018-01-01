@@ -11,7 +11,8 @@ import { RedlineComponent } from '@zebracore/redline-ops';
 import {
   LineCleaningIndexComponent,
   NewLineCleaningComponent,
-  LineCleaningReportsComponent
+  LineCleaningReportsComponent,
+  LineCleaningDetailComponent
 } from './line-cleaning';
 
 import { NewSewerRepairComponent } from './sewer-repair';
@@ -32,12 +33,21 @@ import { SharedModule } from '../../shared/shared.module';
       {
         path: '', component: MaintenanceOpsComponent, children: [
           { path: '', redirectTo: 'home', pathMatch: 'full' },
-          { path: 'home', component: HomeComponent },
+          { path: 'home', component: HomeComponent, data: { title: 'Maintenance Operations', previous: '/' } },
           { path: 'redline', component: RedlineComponent },
 
-          { path: 'line-cleaning', component: LineCleaningIndexComponent },
-          { path: 'line-cleaning/new', component: NewLineCleaningComponent },
+          { path: 'line-cleaning', component: LineCleaningIndexComponent, data: { title: 'Line Cleaning', previous: '/maintenance-ops' } },
+          {
+            path: 'line-cleaning/new',
+            component: NewLineCleaningComponent,
+            data: { title: 'New Line Cleaning', previous: '/maintenance-ops/line-cleaning' }
+          },
           { path: 'line-cleaning/reports', component: LineCleaningReportsComponent },
+          {
+            path: 'line-cleaning/:id',
+            component: LineCleaningDetailComponent,
+            data: { title: 'Line Cleaning', previous: '/maintenance-ops/line-cleaning' }
+          },
 
           { path: 'sewer-repair', component: NewSewerRepairComponent },
 
@@ -59,6 +69,7 @@ import { SharedModule } from '../../shared/shared.module';
     LineCleaningIndexComponent,
     NewLineCleaningComponent,
     LineCleaningReportsComponent,
+    LineCleaningDetailComponent,
 
     NewSewerRepairComponent,
 

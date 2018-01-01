@@ -1,57 +1,57 @@
 <section class='card-block'>
-  <form>
+  <form #form>
     <fieldset class='checkbox'>
-      <input id='line-cleaning-grease' type='checkbox' name='grease' [(ngModel)]='model.grease' />
+      <input id='line-cleaning-grease' type='checkbox' name='line_cleaning[grease]' [(ngModel)]='model.grease' />
       <label for='line-cleaning-grease'>Grease</label>
     </fieldset>
   
     <fieldset class='checkbox'>
-      <input id='line-cleaning-roots' type='checkbox' name='roots' [(ngModel)]='model.roots' />
+      <input id='line-cleaning-roots' type='checkbox' name='line_cleaning[roots]' [(ngModel)]='model.roots' />
       <label for='line-cleaning-roots'>Roots</label>
     </fieldset>
   
     <fieldset class='checkbox'>
-      <input id='line-cleaning-pipe-pieces' type='checkbox' name='pipe_pieces' [(ngModel)]='model.pipe_pieces' />
+      <input id='line-cleaning-pipe-pieces' type='checkbox' name='line_cleaning[pipe_pieces]' [(ngModel)]='model.pipe_pieces' />
       <label for='line-cleaning-pipe-pieces'>Pipe pieces</label>
     </fieldset>
   
     <fieldset class='checkbox'>
-      <input id='line-cleaning-egg-shells' type='checkbox' name='egg_shells' [(ngModel)]='model.egg_shells' />
+      <input id='line-cleaning-egg-shells' type='checkbox' name='line_cleaning[egg_shells]' [(ngModel)]='model.egg_shells' />
       <label for='line-cleaning-egg-shells'>Egg shells</label>
     </fieldset>
   
     <fieldset class='checkbox'>
-      <input id='line-cleaning-cctv' type='checkbox' name='cctv' [(ngModel)]='model.cctv' />
+      <input id='line-cleaning-cctv' type='checkbox' name='line_cleaning[cctv]' [(ngModel)]='model.cctv' />
       <label for='line-cleaning-cctv'>CCTV</label>
     </fieldset>
   
     <fieldset class='form-group'>
       <label for='line-cleaning-cleaned_on'>Cleaned on</label>
-      <input id='line-cleaning-cleaned-on' class='form-control' type='date' name='cleaned_on' required [(ngModel)]='model.cleaned_on' />
+      <input id='line-cleaning-cleaned-on' class='form-control' type='date' name='line_cleaning[cleaned_on]' required [(ngModel)]='model.cleaned_on' />
     </fieldset>
   
     <fieldset class='form-group'>
       <label for='line-cleaning-footage'>Footage</label>
-      <input id='line-cleaning-footage' class='form-control' type='number' name='footage' [(ngModel)]='model.footage' />
+      <input id='line-cleaning-footage' class='form-control' type='number' name='line_cleaning[footage]' [(ngModel)]='model.footage' />
     </fieldset>
   
     <fieldset class='form-group'>
       <label for='line-cleaning-percent-completed'>Percent completed</label>
-      <input id='line-cleaning-percent-completed' class='form-control' type='number' name='percent_completed' [(ngModel)]='model.percent_completed' />
+      <input id='line-cleaning-percent-completed' class='form-control' type='number' name='line_cleaning[percent_completed]' [(ngModel)]='model.percent_completed' />
     </fieldset>
 
     <fieldset class='form-group'>
       <label for='line-cleaning-cleaned-by'>Cleaned by</label>
-      <input id='line-cleaning-cleaned-by' class='form-control' type='text' name='cleaned_by' [(ngModel)]='model.cleaned_by' />
+      <input id='line-cleaning-cleaned-by' class='form-control' type='text' name='line_cleaning[cleaned_by]' [(ngModel)]='model.cleaned_by' />
     </fieldset>
   
     <fieldset class='form-group'>
       <label for='line-cleaning-remarks'>Remarks</label>
-      <textarea id='line-cleaning-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks' required></textarea>
+      <textarea id='line-cleaning-remarks' class='form-control' name='line_cleaning[remarks]' [(ngModel)]='model.remarks' required></textarea>
     </fieldset>
     
     <p>
-      <button id='line-cleaning-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="saveLineCleaning($event)">
+      <button #submitBtn id='line-cleaning-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="saveLineCleaning($event)">
         <i class='fa fa-arrow-circle-right fa-lg'></i>
         Record line cleaning
       </button>

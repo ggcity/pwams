@@ -26,11 +26,13 @@
 }
 
 .opscon > .opscon-header .close-button {
-  float: right;
   border: 0;
   background-color: transparent;
+  margin: 0 20px 0 0;
   padding: 0;
   color: inherit;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {
