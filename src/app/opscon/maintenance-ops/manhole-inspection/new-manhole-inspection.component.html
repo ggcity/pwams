@@ -1,0 +1,83 @@
+<section class='card-block'>
+  <form #form>
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-inspected-on'>Inspected on</label>
+      <input id='manhole-inspection-inspected-on' class='form-control' type='date' name='manhole_inspection[inspected_on]' required [(ngModel)]='model.inspected_on' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-inspector'>Inspector</label>
+      <input id='manhole-inspection-inspector' class='form-control' type='text' name='manhole_inspection[inspector]' [(ngModel)]='model.inspector' />
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-ring-and-cover'>Ring and cover</label>
+      <select id='manhole-inspection-ring-and-cover' class='form-control' name='manhole_inspection[ring_and_cover]' [(ngModel)]='model.ring_and_cover'>
+        <option>OK</option>
+        <option>AC PATCH</option>
+        <option>NEEDS REPLACEMENT</option>
+      </select>
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-material'>Material</label>
+      <select id='manhole-inspection-material' class='form-control' name='manhole_inspection[material]' [(ngModel)]='model.material'>
+        <option>CONCRETE</option>
+        <option>BRICK</option>
+      </select>
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-size'>Size</label>
+      <select id='manhole-inspection-size' class='form-control' name='manhole_inspection[size]' [(ngModel)]='model.size'>
+        <option>24"</option>
+        <option>30"</option>
+        <option>36"</option>
+      </select>
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-shaft'>Shaft</label>
+      <select id='manhole-inspection-shaft' class='form-control' name='manhole_inspection[shaft]' [(ngModel)]='model.shaft'>
+        <option>GOOD</option>
+        <option>EXPOSED</option>
+        <option>AGGREGATE</option>
+      </select>
+    </fieldset>
+
+    <fieldset class='checkbox'>
+      <input id='manhole-inspection-inflow' type='checkbox' name='manhole_inspection[inflow]' [(ngModel)]='model.inflow' />
+      <label for='manhole-inspection-inflow'>Inflow</label>
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-vermin'>Vermin</label>
+      <select id='manhole-inspection-vermin' class='form-control' name='manhole_inspection[vermin]' [(ngModel)]='model.vermin'>
+        <option>ROACHES</option>
+        <option>RATS</option>
+        <option>ALLIGATORS</option>
+        <option>OTHER</option>
+      </select>
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='manhole-inspection-remarks'>Remarks</label>
+      <textarea id='manhole-inspection-remarks' class='form-control' name='manhole_inspection[remarks]' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='manhole-inspection-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record manhole inspection
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>

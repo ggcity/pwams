@@ -23,6 +23,12 @@ import { NewRootFoamingComponent } from './root-foaming';
 
 import { NewPestTreatmentComponent } from './pest-treatment';
 
+import { NewHotspotComponent } from './hotspot';
+
+import {
+  NewManholeInspectionComponent
+} from './manhole-inspection';
+
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
@@ -59,7 +65,15 @@ import { SharedModule } from '../../shared/shared.module';
             path: 'pest-treatment',
             component: NewPestTreatmentComponent,
             data: { title: 'New Pest Treatment', previous: '/maintenance-ops' }
-          }
+          },
+
+          {
+            path: 'manhole-inspection',
+            component: NewManholeInspectionComponent,
+            data: { title: 'New Manhole Inspection', previous: '/maintenance-ops/manhole-inspection'}
+          },
+
+          { path: 'hot-spot', component: NewHotspotComponent, data: { title: 'New Hot Spot', previous: '/maintenance-ops'} }
         ]
       }
     ])
@@ -81,7 +95,11 @@ import { SharedModule } from '../../shared/shared.module';
 
     NewRootFoamingComponent,
 
-    NewPestTreatmentComponent
+    NewPestTreatmentComponent,
+
+    NewManholeInspectionComponent,
+
+    NewHotspotComponent
   ],
   exports: [
     RouterModule

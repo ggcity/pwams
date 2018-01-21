@@ -1,0 +1,48 @@
+<section class='card-block'>
+  <form #form>
+    <fieldset class='form-group'>
+      <label for='hotspot-date'>Date</label>
+      <input id='hotspot-date' class='form-control' type='date' name='Date' required [(ngModel)]='model.date' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='hotspot-footage'>Footage</label>
+      <input id='hotspot-footage' class='form-control' type='text' name='Footage' [(ngModel)]='model.footage' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='hotspot-who'>Who</label>
+      <input id='hotspot-who' class='form-control' type='text' name='WhoList' [(ngModel)]='model.who' />
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='hotspot-type'>Type</label>
+      <select id='hotspot-type' class='form-control' name='Type' [(ngModel)]='model.type'>
+        <option>1 MONTH</option>
+        <option>3 MONTH</option>
+        <option>6 MONTH</option>
+        <option>CHECK ONLY</option>
+      </select>
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='hotspot-remarks'>Remarks</label>
+      <textarea id='hotspot-remarks' class='form-control' name='Remarks' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='hotspot-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record hot spot
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>
