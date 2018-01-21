@@ -1,36 +1,51 @@
 import {
-  Component
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
-import {
-  trigger,
-  style,
-  transition,
-  animate
-}  from '@angular/animations';
+import { Subscription } from 'rxjs/Subscription';
 
+import config from '../../../app.config';
 import { SelectService, LoggerService } from '../../../shared/services';
 import { RootCutting } from './root-cutting.model';
 import { RootCuttingCommon } from './root-cutting-common';
 
 @Component({
-  templateUrl: 'new-root-cutting.component.html',
-  animations: [
-    trigger('routeAnimation', [
-      transition('void => *', [
-        style({ transform: 'translateX(100%)' }),
-        animate('150ms linear')
-      ]),
-      transition('* => void',
-        animate('150ms linear', style({ transform: 'translateX(100%)' }))
-      )
-    ])
-  ]
+  templateUrl: 'new-root-cutting.component.html'
 })
-export class NewRootCuttingComponent extends RootCuttingCommon {
+export class NewRootCuttingComponent extends RootCuttingCommon implements OnDestroy, OnInit {
   model: RootCutting;
+  savable = false;
+  @ViewChild('form') form: ElementRef;
+  @ViewChild('submitBtn') submitBtn: ElementRef;
+
+  selectedTotal = 0;
+  selectedFeatures: ol.Collection<ol.Feature>;
+  selector: ol.interaction.Select;
+  countSubscription: Subscription;
+  featuresSubscription: Subscription;
+
+  ngOnInit () {
+    // Set custom layer filter
+    this.selectService.setLayerFilter(this.layerFilter);
+
+    // Subscribe to features count
+    this.countSubscription = this.selectService.selectCountObservable.subscribe(count => this.selectedTotal = count);
+    this.featuresSubscription = this.selectService.selectionObservable.subscribe(this.featuresSelected.bind(this));
+
+    // Zoom to extent of current selection
+    this.selectService.zoomToSelection(true);
+  }
+
+  ngOnDestroy () {
+    this.selectService.restoreLayerFilter();
+    this.countSubscription.unsubscribe();
+  }
 
   constructor (
     public selectService: SelectService,
@@ -42,16 +57,54 @@ export class NewRootCuttingComponent extends RootCuttingCommon {
     this.model = new RootCutting();
   }
 
-  save (e) {
-    e.target.disabled = true;
+  featuresSelected (features) {
+    this.savable = false;
+    this.selectedFeatures = features;
 
+    if (features && features.getLength() > 0) {
+      // Do check that one and only one pipe
+      try {
+        let ids = features.getArray().map(f => f.getId().split('.')[0]);
+        this.savable = ids.length === 1 && ids.includes('gravity_mains');
+      } catch (e) {
+        this.savable = false;
+      }
+    }
+  }
+
+  save (e) {
+    if (!this.savable) {
+      alert('You must select exactly one pipe to save this form.');
+      return;
+    }
+
+    this.submitBtn.nativeElement.disabled = true;
+    let formData = new FormData(this.form.nativeElement);
+
+    formData.append('root_cutting[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
     this.selectedFeatures.forEach(f => {
       let att = f.getProperties();
-      this.model.pipes.push(att.facilityid);
+      formData.append('root_cutting[pipe_id]', att.id);
     });
 
-    this.http.post('//ch.ci.garden-grove.ca.us/pwams-api/root-cuttings', this.model).subscribe(
-      r => this.router.navigateByUrl('/maintenance-ops/home')
-    );
+    this.http
+      .post(config.apiUrl + '/root-cuttings.json', formData).toPromise()
+      .then(this.handleSaveResult.bind(this))
+      .catch(this.handleSaveError.bind(this));
+  }
+
+  handleSaveResult (response) {
+    this.router.navigateByUrl('/maintenance-ops')
+  }
+
+  handleSaveError (response) {
+    this.submitBtn.nativeElement.disabled = false;
+    let errors = response.json();
+
+    if (errors instanceof Array) {
+      alert('There was an error saving your record: ' + "\n\n" + errors.join("\n"));
+    } else {
+      alert('There was an unknown system error.');
+    }
   }
 }

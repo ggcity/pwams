@@ -1,5 +1,4 @@
 import { SelectService, LoggerService } from '../../../shared/services';
-import { Subscription } from 'rxjs/Subscription';
 
 export class SewerRepairCommon {
   constructor (

@@ -1,33 +1,28 @@
 <section class='card-block'>
-  <form>
+  <form #form>
     <fieldset class='form-group'>
       <label for='root-cutting-cut-by'>Cut by</label>
-      <input id='root-cutting-cut-by' class='form-control' type='text' name='cut_by' [(ngModel)]='model.cut_by' />
+      <input id='root-cutting-cut-by' class='form-control' type='text' name='root_cutting[cut_by]' [(ngModel)]='model.cut_by' />
     </fieldset>
 
     <fieldset class='form-group'>
       <label for='root-cutting-cut-on'>Cut on</label>
-      <input id='root-cutting-cut-on' class='form-control' type='date' name='cut_on' required [(ngModel)]='model.cut_on' />
+      <input id='root-cutting-cut-on' class='form-control' type='date' name='root_cutting[cut_on]' required [(ngModel)]='model.cut_on' />
     </fieldset>
 
     <fieldset class='form-group'>
       <label for='root-cutting-remarks'>Remarks</label>
-      <textarea id='root-cutting-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks' required></textarea>
+      <textarea id='root-cutting-remarks' class='form-control' name='root_cutting[remarks]' [(ngModel)]='model.remarks' required></textarea>
     </fieldset>
     
     <p>
-      <button id='root-cutting-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+      <button #submitBtn id='root-cutting-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='!savable' (click)="save($event)">
         <i class='fa fa-arrow-circle-right fa-lg'></i>
         Record root cutting
       </button>
       <a routerLink='..' class='btn btn-default'>Cancel</a>
     </p>
-  
-    <p>
-      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
-        <b>{{ selectedTotal }}</b>
-      </span>
-      features selected.
-    </p>
+
+    <p *ngIf="!savable" class="text-danger">You must select exactly one pipe to save this record.</p>
   </form>
 </section>

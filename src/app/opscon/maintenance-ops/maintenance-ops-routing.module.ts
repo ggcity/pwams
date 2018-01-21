@@ -51,11 +51,15 @@ import { SharedModule } from '../../shared/shared.module';
 
           { path: 'sewer-repair', component: NewSewerRepairComponent, data: { title: 'New Sewer Repair', previous: '/maintenance-ops' } },
 
-          { path: 'root-cutting', component: NewRootCuttingComponent },
+          { path: 'root-cutting', component: NewRootCuttingComponent, data: { title: 'New Root Cutting', previous: '/maintenance-ops' } },
 
-          { path: 'root-foaming', component: NewRootFoamingComponent },
+          { path: 'root-foaming', component: NewRootFoamingComponent, data: { title: 'New Line Foaming', previous: '/maintenance-ops' } },
 
-          { path: 'pest-treatment', component: NewPestTreatmentComponent }
+          {
+            path: 'pest-treatment',
+            component: NewPestTreatmentComponent,
+            data: { title: 'New Pest Treatment', previous: '/maintenance-ops' }
+          }
         ]
       }
     ])

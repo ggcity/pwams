@@ -79,6 +79,7 @@ export class NewLineCleaningComponent extends LineCleaningCommon implements OnIn
   }
 
   handleSaveError (response) {
+    this.submitBtn.nativeElement.disabled = false;
     let errors = response.json();
 
     if (errors instanceof Array) {

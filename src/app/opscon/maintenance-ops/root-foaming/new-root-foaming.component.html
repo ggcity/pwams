@@ -1,22 +1,22 @@
 <section class='card-block'>
-  <form>
+  <form #form>
     <fieldset class='form-group'>
       <label for='root-foaming-foamed-by'>Foamed by</label>
-      <input id='root-foaming-foamed-by' class='form-control' type='text' name='foamed_by' [(ngModel)]='model.foamed_by' />
+      <input id='root-foaming-foamed-by' class='form-control' type='text' name='line_foaming[foamed_by]' [(ngModel)]='model.foamed_by' />
     </fieldset>
 
     <fieldset class='form-group'>
       <label for='root-foaming-foamed-on'>Foamed on</label>
-      <input id='root-foaming-foamed-on' class='form-control' type='date' name='foamed_on' required [(ngModel)]='model.foamed_on' />
+      <input id='root-foaming-foamed-on' class='form-control' type='date' name='line_foaming[foamed_on]' required [(ngModel)]='model.foamed_on' />
     </fieldset>
 
     <fieldset class='form-group'>
       <label for='root-foaming-remarks'>Remarks</label>
-      <textarea id='root-foaming-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks' required></textarea>
+      <textarea id='root-foaming-remarks' class='form-control' name='line_foaming[remarks]' [(ngModel)]='model.remarks' required></textarea>
     </fieldset>
     
     <p>
-      <button id='root-foaming-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+      <button #submitBtn id='root-foaming-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
         <i class='fa fa-arrow-circle-right fa-lg'></i>
         Record root foaming
       </button>

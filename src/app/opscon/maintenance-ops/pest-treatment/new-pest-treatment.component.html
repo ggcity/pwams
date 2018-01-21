@@ -1,13 +1,13 @@
 <section class='card-block'>
-  <form>
+  <form #form>
     <fieldset class='form-group'>
       <label for='pest-treatment-exterminator'>Exterminator</label>
-      <input id='pest-treatment-exterminator' class='form-control' type='text' name='exterminator' [(ngModel)]='model.exterminator' />
+      <input id='pest-treatment-exterminator' class='form-control' type='text' name='pest_treatment[exterminator]' [(ngModel)]='model.exterminator' />
     </fieldset>
     
     <fieldset class='form-group'>
       <label for='pest-treatment-treatment'>Treatment</label>
-      <select id='pest-treatment-treatment' class='form-control' name='treatment' [(ngModel)]='model.treatment'>
+      <select id='pest-treatment-treatment' class='form-control' name='pest_treatment[treatment]' [(ngModel)]='model.treatment'>
         <option>RAT BAIT</option>
         <option>ROACH SPRAY</option>
       </select>
@@ -15,16 +15,16 @@
 
     <fieldset class='form-group'>
       <label for='pest-treatment-treated-on'>Treated on</label>
-      <input id='pest-treatment-treated-on' class='form-control' type='date' name='treated_on' required [(ngModel)]='model.treated_on' />
+      <input id='pest-treatment-treated-on' class='form-control' type='date' name='pest_treatment[treated_on]' required [(ngModel)]='model.treated_on' />
     </fieldset>
 
     <fieldset class='form-group'>
       <label for='pest-treatment-remarks'>Remarks</label>
-      <textarea id='pest-treatment-remarks' class='form-control' name='remarks' [(ngModel)]='model.remarks' required></textarea>
+      <textarea id='pest-treatment-remarks' class='form-control' name='pest_treatment[remarks]' [(ngModel)]='model.remarks' required></textarea>
     </fieldset>
     
     <p>
-      <button id='pest-treatment-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+      <button #submitBtn id='pest-treatment-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
         <i class='fa fa-arrow-circle-right fa-lg'></i>
         Record pest treatment
       </button>

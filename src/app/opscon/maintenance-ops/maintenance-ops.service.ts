@@ -21,7 +21,7 @@ export class MaintenanceOpsService {
       { name: 'Line Cleaning', machineName: 'line-cleaning', description: 'Report line cleaning operation' },
       { name: 'Sewer Repair', machineName: 'sewer-repair', description: 'Record repair activity'},
       { name: 'Root Cutting', machineName: 'root-cutting', description: 'Record root cutting activity' },
-      { name: 'Root Foaming', machineName: 'root-foaming', description: 'Record root foaming activity' },
+      { name: 'Line Foaming', machineName: 'root-foaming', description: 'Record line foaming activity' },
       { name: 'Pest Treatment', machineName: 'pest-treatment', description: 'Record pest treatment activity' },
       { name: 'Manhole Inspection', machineName: 'manhole-inspection', description: 'Inspect manholes for proper conditions and vermin' }
       // { name: 'Spills', machineName: 'spills', description: 'Report chemical spills and actions taken' }
