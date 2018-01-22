@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
+import config from '../../../app.config';
 import { SelectService, LoggerService } from '../../../shared/services';
 import { SewerRepairCommon } from './sewer-repair-common';
 
@@ -18,6 +19,7 @@ import { SewerRepairCommon } from './sewer-repair-common';
 })
 export class NewSewerRepairComponent extends SewerRepairCommon implements OnDestroy, OnInit {
   @ViewChild('sewerRepairForm') form: ElementRef;
+  @ViewChild('submitBtn') submitBtn: ElementRef;
 
   selectedTotal = 0;
   selectedFeatures: ol.Collection<ol.Feature>;
@@ -26,7 +28,7 @@ export class NewSewerRepairComponent extends SewerRepairCommon implements OnDest
   featuresSubscription: Subscription;
   savable = false;
 
-  ngOnInit () {
+  ngOnInit() {
     // Set custom layer filter
     this.selectService.setLayerFilter(this.layerFilter);
 
@@ -38,12 +40,12 @@ export class NewSewerRepairComponent extends SewerRepairCommon implements OnDest
     this.selectService.zoomToSelection(true);
   }
 
-  ngOnDestroy () {
+  ngOnDestroy() {
     this.selectService.restoreLayerFilter();
     this.countSubscription.unsubscribe();
   }
 
-  constructor (
+  constructor(
     public selectService: SelectService,
     public logger: LoggerService,
     public http: Http,
@@ -52,7 +54,7 @@ export class NewSewerRepairComponent extends SewerRepairCommon implements OnDest
     super(selectService, logger);
   }
 
-  featuresSelected (features) {
+  featuresSelected(features) {
     this.savable = false;
     this.selectedFeatures = features;
 
@@ -67,16 +69,17 @@ export class NewSewerRepairComponent extends SewerRepairCommon implements OnDest
     }
   }
 
-  saveSewerRepair (e) {
+  save(e) {
     if (!this.savable) {
       alert('You must select exactly one pipe and one manhole to save this form.');
       return;
     }
 
-    e.target.disabled = true;
+    this.submitBtn.nativeElement.disabled = true;
 
     let formData = new FormData(this.form.nativeElement);
 
+    formData.append('sewer_repair[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
     this.selectedFeatures.forEach(f => {
       let att = f.getProperties();
       let [type, id] = f.getId().split('.');
@@ -84,8 +87,24 @@ export class NewSewerRepairComponent extends SewerRepairCommon implements OnDest
       else if (type === 'manholes') formData.append('sewer_repair[manhole_id]', att.id);
     });
 
-    this.http.post('//ch.ci.garden-grove.ca.us/pwams-api/sewer-repairs.json', formData).subscribe(
-      r => this.router.navigateByUrl('/maintenance-ops/home')
-    );
+    this.http
+      .post(config.apiUrl + '/sewer-repairs.json', formData).toPromise()
+      .then(this.handleSaveResult.bind(this))
+      .catch(this.handleSaveError.bind(this));
+  }
+
+  handleSaveResult(response) {
+    this.router.navigateByUrl('/maintenance-ops/sewer-repair')
+  }
+
+  handleSaveError(response) {
+    this.submitBtn.nativeElement.disabled = false;
+    let errors = response.json();
+
+    if (errors instanceof Array) {
+      alert('There was an error saving your record: ' + "\n\n" + errors.join("\n"));
+    } else {
+      alert('There was an unknown system error.');
+    }
   }
 }

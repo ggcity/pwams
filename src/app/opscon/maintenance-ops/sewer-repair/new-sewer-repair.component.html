@@ -50,7 +50,7 @@
     </fieldset>
     
     <p>
-      <button id='sewer-repair-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='!savable' (click)="saveSewerRepair($event)">
+      <button #submitBtn id='sewer-repair-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='!savable' (click)="save($event)">
         <i class='fa fa-arrow-circle-right fa-lg'></i>
         Record sewer repair
       </button>

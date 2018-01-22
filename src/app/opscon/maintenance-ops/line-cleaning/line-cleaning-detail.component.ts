@@ -18,6 +18,7 @@ import FillStyle from 'ol/style/fill';
 import StrokeStyle from 'ol/style/stroke';
 import extent from 'ol/extent';
 
+import config from '../../../app.config';
 import { MapService, SelectService, LoggerService } from '../../../shared/services';
 import { LineCleaning } from './line-cleaning.model';
 import { LineCleaningCommon } from './line-cleaning-common';
@@ -55,11 +56,15 @@ export class LineCleaningDetailComponent extends LineCleaningCommon implements O
     let lc = this.model = response.json();
 
     if (lc.extent && lc.extent instanceof Array) {
+      // FIXME: idle computation wtf... needed to get this layer to work on the first run?
+      Polygon.fromExtent(extent.buffer(lc.extent, 20));
+
       let feature = new Feature({
         geometry: Polygon.fromExtent(extent.buffer(lc.extent, 20))
       });
 
       let source = new VectorSource({ features: [feature] });
+
       this.extentLayer =  new VectorLayer({
         source: source,
         style: new Style({
@@ -82,7 +87,7 @@ export class LineCleaningDetailComponent extends LineCleaningCommon implements O
   }
 
   private getLineCleaning (id): Promise<any> {
-    return this.http.get('//ch.ci.garden-grove.ca.us/pwams-api/line-cleanings/' + id + '.json')
+    return this.http.get(config.apiUrl + '/line-cleanings/' + id + '.json')
            .toPromise();
   }
 }

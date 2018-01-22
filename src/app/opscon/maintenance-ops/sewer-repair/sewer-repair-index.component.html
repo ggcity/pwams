@@ -1,0 +1,17 @@
+<section class='card-block'>
+  <p>
+    <a [routerLink]="'./new'" class="btn btn-lg btn-primary">New record</a>
+    <!-- <a [routerLink]="'./reports'" class="btn btn-lg btn-secondary">View reports</a> -->
+  </p>
+  <h4>Recent repairs</h4>
+  <div class="list-group">
+    <a *ngFor='let r of recentRecords' [routerLink]="r.id" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{r.repaired_on | date:'shortDate'}}</h5>
+        <small>{{r.repaired_by}}</small>
+      </div>
+      <p class="mb-1">{{r.remarks}}</p>
+      <small>{{r.photos.length}} images</small>
+    </a>
+  </div>
+</section>

@@ -9,6 +9,8 @@ export class SewerCleaning {
     public stream?: string,
     public remarks?: string,
     public repaired_by?: string,
+    public photos?: Array<string>,
+    public extent?: [number, number, number, number],
     public pipes?: Array<number>
   ) {
     if (this.pipes === undefined || this.pipes === null) this.pipes = [];

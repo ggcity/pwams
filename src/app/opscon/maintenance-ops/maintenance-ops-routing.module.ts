@@ -15,7 +15,10 @@ import {
   LineCleaningDetailComponent
 } from './line-cleaning';
 
-import { NewSewerRepairComponent } from './sewer-repair';
+import {
+  SewerRepairIndexComponent,
+  NewSewerRepairComponent
+} from './sewer-repair';
 
 import { NewRootCuttingComponent } from './root-cutting';
 
@@ -40,7 +43,7 @@ import { SharedModule } from '../../shared/shared.module';
         path: '', component: MaintenanceOpsComponent, children: [
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: 'home', component: HomeComponent, data: { title: 'Maintenance Operations', previous: '/' } },
-          { path: 'redline', component: RedlineComponent },
+          { path: 'redline', component: RedlineComponent, data: { title: 'New Redline', previous: '/maintenance-ops' } },
 
           { path: 'line-cleaning', component: LineCleaningIndexComponent, data: { title: 'Line Cleaning', previous: '/maintenance-ops' } },
           {
@@ -55,7 +58,12 @@ import { SharedModule } from '../../shared/shared.module';
             data: { title: 'Line Cleaning', previous: '/maintenance-ops/line-cleaning' }
           },
 
-          { path: 'sewer-repair', component: NewSewerRepairComponent, data: { title: 'New Sewer Repair', previous: '/maintenance-ops' } },
+          { path: 'sewer-repair', component: SewerRepairIndexComponent, data: { title: 'Sewer Repair', previous: '/maintenance-ops' } },
+          {
+            path: 'sewer-repair/new',
+            component: NewSewerRepairComponent,
+            data: { title: 'New Sewer Repair', previous: '/maintenance-ops/sewer-repair' }
+          },
 
           { path: 'root-cutting', component: NewRootCuttingComponent, data: { title: 'New Root Cutting', previous: '/maintenance-ops' } },
 
@@ -89,6 +97,7 @@ import { SharedModule } from '../../shared/shared.module';
     LineCleaningReportsComponent,
     LineCleaningDetailComponent,
 
+    SewerRepairIndexComponent,
     NewSewerRepairComponent,
 
     NewRootCuttingComponent,
