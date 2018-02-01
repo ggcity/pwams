@@ -80,7 +80,11 @@ export class NewManholeInspectionComponent extends ManholeInspectionCommon imple
 
   handleSaveError (response) {
     this.submitBtn.nativeElement.disabled = false;
-    let errors = response.json();
+    let errors;
+
+    try {
+      errors = response.json();
+    } catch (e) {}
 
     if (errors instanceof Array) {
       alert('There was an error saving your record: ' + "\n\n" + errors.join("\n"));

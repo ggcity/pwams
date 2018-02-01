@@ -16,13 +16,13 @@ import extent from 'ol/extent';
 
 import config from '../../../app.config';
 import { MapService, SelectService, LoggerService } from '../../../shared/services';
-import { SewerCleaning } from './sewer-repair.model';
+import { SewerRepair } from './sewer-repair.model';
 
 @Component({
   templateUrl: 'sewer-repair-index.component.html'
 })
 export class SewerRepairIndexComponent implements OnInit, OnDestroy {
-  recentRecords: Array<SewerCleaning>;
+  recentRecords: Array<SewerRepair>;
   recentRecordsLayer: VectorLayer;
 
   ngOnInit() {
@@ -50,7 +50,6 @@ export class SewerRepairIndexComponent implements OnInit, OnDestroy {
     let features: Array<Feature> = [];
 
     this.recentRecords.forEach(r => {
-      console.log(r.extent);
       if (r.extent && r.extent instanceof Array) {
         features.push(new Feature({
           geometry: Polygon.fromExtent(extent.buffer(r.extent, 50))

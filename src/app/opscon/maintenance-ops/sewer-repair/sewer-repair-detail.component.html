@@ -1,0 +1,51 @@
+<section class='card-block'>
+    <form #form>
+      <fieldset class='form-group'>
+        <label for='sewer-repair-repaired-by'>Repaired by</label>
+        <input id='sewer-repair-repaired-by' class='form-control' type='text' name='sewer_repair[repaired_by]' [(ngModel)]='model.repaired_by' disabled [(ngModel)]='model.repaired_by' disabled />
+      </fieldset>
+  
+      <fieldset class='form-group'>
+        <label for='sewer-repair-repaired-on'>Repaired on</label>
+        <input id='sewer-repair-repaired-on' class='form-control' type='date' name='sewer_repair[repaired_on]' [(ngModel)]='model.repaired_on' disabled required />
+      </fieldset>
+  
+      <fieldset class='form-group'>
+        <label for='sewer-repair-description'>Description</label>
+        <textarea id='sewer-repair-description' class='form-control' name='sewer_repair[description]' [(ngModel)]='model.description' disabled required></textarea>
+      </fieldset>
+    
+      <fieldset class='form-group'>
+        <label for='sewer-repair-material-type'>Material type</label>
+        <input id='sewer-repair-material-type' class='form-control' type='text' name='sewer_repair[material_type]' [(ngModel)]='model.material_type' disabled />
+      </fieldset>
+      
+      <fieldset class='form-group'>
+        <label for='sewer-repair-material-feet'>Material feet</label>
+        <input id='sewer-repair-material-feet' class='form-control' type='number' name='sewer_repair[material_feet]' [(ngModel)]='model.material_feet' disabled />
+      </fieldset>
+    
+      <fieldset class='form-group'>
+        <label for='sewer-repair-feet-from'>Feet from</label>
+        <input id='sewer-repair-feet-from' class='form-control' type='number' name='sewer_repair[feet_from]' [(ngModel)]='model.feet_from' disabled />
+      </fieldset>
+      
+      <fieldset class='form-group'>
+        <label for='sewer-repair-stream'>Stream</label>
+        <select id='sewer-repair-stream' class='form-control' name='sewer_repair[stream]' [(ngModel)]='model.stream' disabled >
+          <option value="">N/A</option>
+          <option>DOWN</option>
+          <option>UP</option>
+        </select>
+      </fieldset>
+    
+      <fieldset class='form-group'>
+        <label for='sewer-repair-remarks'>Remarks</label>
+        <textarea id='sewer-repair-remarks' class='form-control' name='sewer_repair[remarks]' [(ngModel)]='model.remarks' disabled required></textarea>
+      </fieldset>
+
+      <img *ngFor='let p of model.photos' [src]="apiUrl + p.url" style='width: 90%'>
+
+    </form>
+  </section>
+  

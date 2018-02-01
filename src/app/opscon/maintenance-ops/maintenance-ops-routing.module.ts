@@ -17,6 +17,7 @@ import {
 
 import {
   SewerRepairIndexComponent,
+  SewerRepairDetailComponent,
   NewSewerRepairComponent
 } from './sewer-repair';
 
@@ -64,6 +65,11 @@ import { SharedModule } from '../../shared/shared.module';
             component: NewSewerRepairComponent,
             data: { title: 'New Sewer Repair', previous: '/maintenance-ops/sewer-repair' }
           },
+          {
+            path: 'sewer-repair/:id',
+            component: SewerRepairDetailComponent,
+            data: { title: 'Sewer Repair', previous: '/maintenance-ops/sewer-repair' }
+          },
 
           { path: 'root-cutting', component: NewRootCuttingComponent, data: { title: 'New Root Cutting', previous: '/maintenance-ops' } },
 
@@ -78,7 +84,7 @@ import { SharedModule } from '../../shared/shared.module';
           {
             path: 'manhole-inspection',
             component: NewManholeInspectionComponent,
-            data: { title: 'New Manhole Inspection', previous: '/maintenance-ops/manhole-inspection'}
+            data: { title: 'New Manhole Inspection', previous: '/maintenance-ops'}
           },
 
           { path: 'hot-spot', component: NewHotspotComponent, data: { title: 'New Hot Spot', previous: '/maintenance-ops'} }
@@ -98,6 +104,7 @@ import { SharedModule } from '../../shared/shared.module';
     LineCleaningDetailComponent,
 
     SewerRepairIndexComponent,
+    SewerRepairDetailComponent,
     NewSewerRepairComponent,
 
     NewRootCuttingComponent,

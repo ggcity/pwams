@@ -1,4 +1,4 @@
-export class SewerCleaning {
+export class SewerRepair {
   constructor (
     public id?: number,
     public repaired_on?: Date,
@@ -9,7 +9,7 @@ export class SewerCleaning {
     public stream?: string,
     public remarks?: string,
     public repaired_by?: string,
-    public photos?: Array<string>,
+    public photos?: Array<any>,
     public extent?: [number, number, number, number],
     public pipes?: Array<number>
   ) {

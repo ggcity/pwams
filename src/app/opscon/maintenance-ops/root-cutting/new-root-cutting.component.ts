@@ -36,7 +36,7 @@ export class NewRootCuttingComponent extends RootCuttingCommon implements OnDest
 
     // Subscribe to features count
     this.countSubscription = this.selectService.selectCountObservable.subscribe(count => this.selectedTotal = count);
-    this.featuresSubscription = this.selectService.selectionObservable.subscribe(this.featuresSelected.bind(this));
+    this.featuresSubscription = this.selectService.selectionObservable.subscribe(features => this.selectedFeatures = features);
 
     // Zoom to extent of current selection
     this.selectService.zoomToSelection(true);
@@ -57,34 +57,14 @@ export class NewRootCuttingComponent extends RootCuttingCommon implements OnDest
     this.model = new RootCutting();
   }
 
-  featuresSelected (features) {
-    this.savable = false;
-    this.selectedFeatures = features;
-
-    if (features && features.getLength() > 0) {
-      // Do check that one and only one pipe
-      try {
-        let ids = features.getArray().map(f => f.getId().split('.')[0]);
-        this.savable = ids.length === 1 && ids.includes('gravity_mains');
-      } catch (e) {
-        this.savable = false;
-      }
-    }
-  }
-
   save (e) {
-    if (!this.savable) {
-      alert('You must select exactly one pipe to save this form.');
-      return;
-    }
-
     this.submitBtn.nativeElement.disabled = true;
     let formData = new FormData(this.form.nativeElement);
 
     formData.append('root_cutting[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
     this.selectedFeatures.forEach(f => {
       let att = f.getProperties();
-      formData.append('root_cutting[pipe_id]', att.id);
+      formData.append('pipes[]', att.id);
     });
 
     this.http
@@ -99,7 +79,11 @@ export class NewRootCuttingComponent extends RootCuttingCommon implements OnDest
 
   handleSaveError (response) {
     this.submitBtn.nativeElement.disabled = false;
-    let errors = response.json();
+    let errors;
+
+    try {
+      errors = response.json();
+    } catch (e) {}
 
     if (errors instanceof Array) {
       alert('There was an error saving your record: ' + "\n\n" + errors.join("\n"));
