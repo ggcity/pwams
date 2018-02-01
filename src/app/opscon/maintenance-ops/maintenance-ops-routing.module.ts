@@ -27,11 +27,15 @@ import { NewRootFoamingComponent } from './root-foaming';
 
 import { NewPestTreatmentComponent } from './pest-treatment';
 
-import { NewHotspotComponent } from './hotspot';
-
 import {
   NewManholeInspectionComponent
 } from './manhole-inspection';
+
+import { NewHotspotComponent } from './hotspot';
+
+import { NewValveExerciseComponent } from './valve-exercise';
+
+import { NewValveReplacementComponent } from './valve-replacement';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -87,7 +91,18 @@ import { SharedModule } from '../../shared/shared.module';
             data: { title: 'New Manhole Inspection', previous: '/maintenance-ops'}
           },
 
-          { path: 'hot-spot', component: NewHotspotComponent, data: { title: 'New Hot Spot', previous: '/maintenance-ops'} }
+          {
+            path: 'valve-exercise',
+            component: NewValveExerciseComponent,
+            data: { title: 'New Valve Exercise', previous: '/maintenance-ops' }
+          },
+
+          {
+            path: 'valve-replacement',
+            component: NewValveReplacementComponent,
+            data: { title: 'New Replacement', previous: '/maintenance-ops' }
+          }
+
         ]
       }
     ])
@@ -115,7 +130,10 @@ import { SharedModule } from '../../shared/shared.module';
 
     NewManholeInspectionComponent,
 
-    NewHotspotComponent
+    NewHotspotComponent,
+
+    NewValveExerciseComponent,
+    NewValveReplacementComponent
   ],
   exports: [
     RouterModule

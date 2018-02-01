@@ -1,0 +1,32 @@
+<section class='card-block'>
+  <form ngNoForm method="post" action="https://ch.ci.garden-grove.ca.us/pw-wo/new_workorders/new_mode" target="_blank">
+    <input type="hidden" name="mode" value="nodes">
+
+    <div *ngFor='let node of selectedNodes'>
+      <input type="hidden" [name]="'nodes['+node.idx+'][id]'" [value]="node.id">
+      <input type="hidden" [name]="'nodes['+node.idx+'][northing]'" [value]="node.northing">
+      <input type="hidden" [name]="'nodes['+node.idx+'][easting]'" [value]="node.easting">
+      <input type="hidden" [name]="'nodes['+node.idx+'][type]'" value='WATER'>
+    </div>
+      
+    <fieldset class='form-group'>
+      <label for='valve-replacement-request'>Request</label>
+      <textarea id='valve-replacement-request' class='form-control' name='request' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='valve-replacement-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0'>
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Send to workorder
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>

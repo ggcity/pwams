@@ -26,7 +26,7 @@ export class MaintenanceOpsService {
     let operations = {
       sewer: [
         { name: 'Manhole Inspection', machineName: 'manhole-inspection', description: 'Inspect manholes for proper conditions and vermin' },
-        { name: 'Hot Spot Cleaning', machineName: 'hot-spot', description: 'Update hot spots cleaning record'},
+        // { name: 'Hot Spot Cleaning', machineName: 'hot-spot', description: 'Update hot spots cleaning record'},
         // { name: 'CCTV', machineName: 'cctv', description: 'View and inspect CCTV videos' },
         { name: 'Line Cleaning', machineName: 'line-cleaning', description: 'Report line cleaning operation' },
         { name: 'Sewer Repair', machineName: 'sewer-repair', description: 'Record repair activity'},
@@ -38,6 +38,8 @@ export class MaintenanceOpsService {
       ],
 
       water: [
+        { name: 'Valve Exercise', machineName: 'valve-exercise', description: 'Track exercising records' },
+        { name: 'Valve Replacement', machineName: 'valve-replacement', description: 'Generate valve replacement work order' },
         { name: 'Redline', machineName: 'redline', description: 'Markup map for corrections' }
       ],
 
