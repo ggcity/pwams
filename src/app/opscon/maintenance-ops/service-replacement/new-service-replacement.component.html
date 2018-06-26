@@ -1,0 +1,58 @@
+<section class='card-block'>
+  <form #form>
+    <fieldset class='form-group'>
+      <label for='replaced-on'>Replaced on</label>
+      <input id='replaced-on' class='form-control' type='date' name='service_replacement[replaced_on]' required [(ngModel)]='model.replaced_on' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='replaced-by'>Replaced by</label>
+      <input id='replaced-by' class='form-control' type='text' name='service_replacement[replaced_by]' [(ngModel)]='model.replaced_by' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='service_type'>Type of Water Service</label>
+      <input id='service_type' class='form-control' type='text' name='service_replacement[service_type]' [(ngModel)]='model.service_type' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='old_service_type'>Old type</label>
+      <input id='old_service_type' class='form-control' type='text' name='service_replacement[old_service_type]' [(ngModel)]='model.old_service_type' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='replacement_type'>Replacement Type</label>
+      <input id='replacement_type' class='form-control' type='text' name='service_replacement[replacement_type]' [(ngModel)]='model.replacement_type' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='meter_number'>Meter Number</label>
+      <input id='meter_number' class='form-control' type='text' name='service_replacement[meter_number]' [(ngModel)]='model.meter_number' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='new_box'>New Box</label>
+      <input id='new_box' class='form-control' type='text' name='service_replacement[new_box]' [(ngModel)]='model.new_box' />
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='remarks'>Remarks</label>
+      <textarea id='remarks' class='form-control' name='service_replacement[remarks]' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record replacement
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>

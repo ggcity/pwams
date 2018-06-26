@@ -37,6 +37,14 @@ import { NewValveExerciseComponent } from './valve-exercise';
 
 import { NewGateValveComponent } from './gate-valve';
 
+import { NewWaterMainRepairComponent } from './water-main-repair';
+
+import { NewServiceReplacementComponent } from './service-replacement';
+
+import { NewHydrantReplacementComponent } from './hydrant-replacement';
+
+import { NewLargeMeterReplacementComponent } from './large-meter-replacement';
+
 import { NewValveReplacementComponent } from './valve-replacement';
 
 import { SharedModule } from '../../shared/shared.module';
@@ -106,6 +114,30 @@ import { SharedModule } from '../../shared/shared.module';
           },
 
           {
+            path: 'water-main-repair',
+            component: NewWaterMainRepairComponent,
+            data: { title: 'New Water Main Repair', previous: '/maintenance-ops' }
+          },
+
+          {
+            path: 'service-replacement',
+            component: NewServiceReplacementComponent,
+            data: { title: 'New Service Replacement', previous: '/maintenance-ops' }
+          },
+
+          {
+            path: 'hydrant-replacement',
+            component: NewHydrantReplacementComponent,
+            data: { title: 'New Hydrant Replacement', previous: '/maintenance-ops' }
+          },
+
+          {
+            path: 'large-meter-replacement',
+            component: NewLargeMeterReplacementComponent,
+            data: { title: 'New Large Meter Replacement', previous: '/maintenance-ops' }
+          },
+
+          {
             path: 'valve-replacement',
             component: NewValveReplacementComponent,
             data: { title: 'New Replacement', previous: '/maintenance-ops' }
@@ -142,6 +174,10 @@ import { SharedModule } from '../../shared/shared.module';
 
     NewValveExerciseComponent,
     NewGateValveComponent,
+    NewWaterMainRepairComponent,
+    NewServiceReplacementComponent,
+    NewHydrantReplacementComponent,
+    NewLargeMeterReplacementComponent,
     NewValveReplacementComponent
   ],
   exports: [

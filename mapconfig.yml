@@ -1,0 +1,127 @@
+---
+view:
+  center:
+  - -13131247
+  - 3999299
+  zoom: 13
+  projection: EPSG:3857
+loadTilesWhileAnimating: true
+loadTilesWhileInteracting: true
+baseLayers:
+- name: Garden Grove Basemap
+  layerType: tile
+  source:
+    type: xyz
+    url: "//www.ci.garden-grove.ca.us/tileserver/styles/gg-basic/{z}/{x}/{y}.png"
+overlays:
+- name: City Boundaries
+  layerType: image
+  source:
+    type: WMS
+    url: //www.ci.garden-grove.ca.us/geoserver/wms
+    typeName: gis:city_boundary
+
+defaultDataset: sewer
+datasets:
+  sewer:
+  - name: Gravity Main
+    machineName: sewerGravityMains
+    layerType: vector
+    source:
+      type: WFS
+      url: //www.ci.garden-grove.ca.us/geoserver/sewer/ows
+      typeName: sewer:gravity_mains
+    style:
+      styleType: line
+      stroke:
+        width: 5
+        color:
+        - 50
+        - 150
+        - 120
+        - 0.85
+    maxResolution: 5
+  - name: Manholes
+    machineName: sewerManholes
+    layerType: vector
+    source:
+      type: WFS
+      url: //www.ci.garden-grove.ca.us/geoserver/sewer/ows
+      typeName: sewer:manholes
+    style:
+      styleType: point
+      radius: 7
+      fill:
+      - 130
+      - 50
+      - 150
+      - 0.8
+    maxResolution: 5
+  storm_water:
+  - name: Storm Water Gravity Main
+    machineName: swgravitymain
+    layerType: vector
+    source:
+      type: WFS
+      url: http://52.40.215.70:8080/geoserver/dev/ows
+      typeName: dev:swgravitymain
+    style:
+      styleType: line
+      stroke:
+        width: 4
+        color:
+        - 240
+        - 120
+        - 60
+        - 0.85
+    maxResolution: 3.5
+  - name: Storm Water Manholes
+    machineName: swmanhole
+    layerType: vector
+    source:
+      type: WFS
+      url: http://52.40.215.70:8080/geoserver/dev/ows
+      typeName: dev:swmanhole
+    style:
+      styleType: point
+      radius: 6
+      fill:
+      - 145
+      - 15
+      - 15
+      - 0.8
+    maxResolution: 1.2
+  water:
+  - name: Active Mains
+    machineName: waterActiveMains
+    layerType: vector
+    source:
+      type: WFS
+      url: //www.ci.garden-grove.ca.us/geoserver/water/ows
+      typeName: water:test_mains
+    style:
+      styleType: line
+      stroke:
+        width: 5
+        color:
+        - 25
+        - 164
+        - 249
+        - 0.85
+    maxResolution: 5
+  - name: System Valves
+    machineName: waterSystemValves
+    layerType: vector
+    source:
+      type: WFS
+      url: //www.ci.garden-grove.ca.us/geoserver/water/ows
+      typeName: water:system_valves
+    style:
+      styleType: point
+      radius: 7
+      fill:
+      - 81
+      - 134
+      - 249
+      - 0.9
+    maxResolution: 5

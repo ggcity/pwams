@@ -1,0 +1,43 @@
+<section class='card-block'>
+  <form #form>
+    <fieldset class='form-group'>
+      <label for='replaced-on'>Replaced on</label>
+      <input id='replaced-on' class='form-control' type='date' name='hydrant_replacement[replaced_on]' required [(ngModel)]='model.replaced_on' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='replaced-by'>Replaced by</label>
+      <input id='replaced-by' class='form-control' type='text' name='hydrant_replacement[replaced_by]' [(ngModel)]='model.replaced_by' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='old_type'>Old type</label>
+      <input id='old_type' class='form-control' type='text' name='hydrant_replacement[old_type]' [(ngModel)]='model.old_type' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='replacement_type'>Replacement Type</label>
+      <input id='replacement_type' class='form-control' type='text' name='hydrant_replacement[replacement_type]' [(ngModel)]='model.replacement_type' />
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='remarks'>Remarks</label>
+      <textarea id='remarks' class='form-control' name='hydrant_replacement[remarks]' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record replacement
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>

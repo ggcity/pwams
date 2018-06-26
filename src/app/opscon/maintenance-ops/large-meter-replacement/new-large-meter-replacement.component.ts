@@ -12,14 +12,14 @@ import { Subscription } from 'rxjs/Subscription';
 
 import config from '../../../app.config';
 import { SelectService, LoggerService } from '../../../shared/services';
-import { GateValve } from './gate-valve.model';
-import { GateValveCommon } from './gate-valve-common';
+import { LargeMeterReplacement } from './large-meter-replacement.model';
+import { LargeMeterReplacementCommon } from './large-meter-replacement-common';
 
 @Component({
-  templateUrl: 'new-gate-valve.component.html'
+  templateUrl: 'new-large-meter-replacement.component.html'
 })
-export class NewGateValveComponent extends GateValveCommon implements OnInit, OnDestroy {
-  model: GateValve;
+export class NewLargeMeterReplacementComponent extends LargeMeterReplacementCommon implements OnInit, OnDestroy {
+  model: LargeMeterReplacement;
 
   selectedTotal = 0;
   selectedFeatures: ol.Collection<ol.Feature>;
@@ -55,21 +55,21 @@ export class NewGateValveComponent extends GateValveCommon implements OnInit, On
     public router: Router
   ) {
     super(selectService, logger);
-    this.model = new GateValve();
+    this.model = new LargeMeterReplacement();
   }
 
   save (e) {
     this.submitBtn.nativeElement.disabled = true;
     let formData = new FormData(this.form.nativeElement);
 
-    formData.append('gate_valve[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
+    formData.append('large_meter_replacement[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
     this.selectedFeatures.forEach(f => {
       let att = f.getProperties();
-      formData.append('system_valves[]', att.id);
+      formData.append('features[]', att.id);
     });
 
     this.http
-      .post(config.apiUrl + '/gate-valves.json', formData).toPromise()
+      .post(config.apiUrl + '/large-meter-replacements.json', formData).toPromise()
       .then(this.handleSaveResult.bind(this))
       .catch(this.handleSaveError.bind(this));
   }

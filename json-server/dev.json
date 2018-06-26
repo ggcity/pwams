@@ -20,6 +20,17 @@
         }
       }
     ],
+    "overlays": [
+      {
+        "name": "City Boundaries",
+        "layerType": "image",
+        "source": {
+          "type": "WMS",
+          "url": "//www.ci.garden-grove.ca.us/geoserver/wms",
+          "typeName": "gis:city_boundary"
+        }
+      }
+    ],
     "defaultDataset": "sewer",
     "datasets": {
       "sewer": [
@@ -29,8 +40,8 @@
           "layerType": "vector",
           "source": {
             "type": "WFS",
-            "url": "http://52.40.215.70:8080/geoserver/dev/ows",
-            "typeName": "dev:ssgravitymain"
+            "url": "//www.ci.garden-grove.ca.us/geoserver/sewer/ows",
+            "typeName": "sewer:gravity_mains"
           },
           "style": {
             "styleType": "line",
@@ -43,7 +54,8 @@
                 0.85
               ]
             }
-          }
+          },
+          "maxResolution": 5
         },
         {
           "name": "Manholes",
@@ -51,8 +63,8 @@
           "layerType": "vector",
           "source": {
             "type": "WFS",
-            "url": "http://52.40.215.70:8080/geoserver/dev/ows",
-            "typeName": "dev:ssmanhole"
+            "url": "//www.ci.garden-grove.ca.us/geoserver/sewer/ows",
+            "typeName": "sewer:manholes"
           },
           "style": {
             "styleType": "point",
@@ -64,7 +76,7 @@
               0.8
             ]
           },
-          "maxResolution": 3.5
+          "maxResolution": 5
         }
       ],
       "storm_water": [
@@ -115,12 +127,13 @@
       ],
       "water": [
         {
-          "name": "Gravity Main JSON",
-          "machineName": "ssgravitymain",
+          "name": "Active Mains",
+          "machineName": "waterActiveMains",
           "layerType": "vector",
           "source": {
             "type": "GeoJSON",
-            "url": "http://localhost:3000/layers/ssgravitymain"
+            "url": "//www.ci.garden-grove.ca.us/geoserver/water/ows",
+            "typeName": "water:mains"
           },
           "style": {
             "styleType": "line",
@@ -133,7 +146,8 @@
                 0.85
               ]
             }
-          }
+          },
+          "maxResolution": 5
         }
       ]
     }

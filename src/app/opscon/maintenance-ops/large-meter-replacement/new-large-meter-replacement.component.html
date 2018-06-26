@@ -1,0 +1,43 @@
+<section class='card-block'>
+  <form #form>
+    <fieldset class='form-group'>
+      <label for='replaced-on'>Replaced on</label>
+      <input id='replaced-on' class='form-control' type='date' name='large_meter_replacement[replaced_on]' required [(ngModel)]='model.replaced_on' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='replaced-by'>Replaced by</label>
+      <input id='replaced-by' class='form-control' type='text' name='large_meter_replacement[replaced_by]' [(ngModel)]='model.replaced_by' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='type'>Type of Water Meter</label>
+      <input id='type' class='form-control' type='text' name='large_meter_replacement[type]' [(ngModel)]='model.type' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='size'>Size</label>
+      <input id='size' class='form-control' type='text' name='large_meter_replacement[size]' [(ngModel)]='model.size' />
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='remarks'>Remarks</label>
+      <textarea id='remarks' class='form-control' name='large_meter_replacement[remarks]' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record replacement
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>

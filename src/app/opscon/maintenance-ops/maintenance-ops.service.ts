@@ -39,9 +39,12 @@ export class MaintenanceOpsService {
 
       water: [
         { name: 'Gate Valve', machineName: 'gate-valve', description: 'Inspect gate valves' },
+        { name: 'Main Repair', machineName: 'water-main-repair', description: 'Record Water Main repairs' },
+        { name: 'Service Replacement', machineName: 'service-replacement', description: 'Record water service replacement' },
+        { name: 'Hydrant Replacement', machineName: 'hydrant-replacement', description: 'Record hydrant service replacement' },
+        { name: 'Large Meter Replacement', machineName: 'large-meter-replacement', description: 'Record large meter replacement' },
         { name: 'Valve Exercise', machineName: 'valve-exercise', description: 'Track exercising records' },
-        { name: 'Valve Replacement', machineName: 'valve-replacement', description: 'Generate valve replacement work order' },
-        { name: 'Redline', machineName: 'redline', description: 'Markup map for corrections' }
+        { name: 'Valve Replacement', machineName: 'valve-replacement', description: 'Generate valve replacement work order' }
       ],
 
       storm_water: [

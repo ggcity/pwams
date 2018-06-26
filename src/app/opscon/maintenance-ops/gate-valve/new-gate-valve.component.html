@@ -22,7 +22,12 @@
     
     <fieldset class='form-group'>
       <label for='gate-valve-main-type'>Type of Main</label>
-      <input id='gate-valve-main-type' class='form-control' type='text' name='gate_valve[main_type]' [(ngModel)]='model.main_type' />
+      <select id='gate-valve-main-type' class='form-control' name='gate_valve[main_type]' [(ngModel)]='model.main_type'>
+        <option>AC</option>
+        <option>C-900</option>
+        <option>Ductile</option>
+        <option>Steele</option>
+      </select>
     </fieldset>
       
     <fieldset class='form-group'>

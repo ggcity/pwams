@@ -1,0 +1,43 @@
+<section class='card-block'>
+  <form #form>
+    <fieldset class='form-group'>
+      <label for='repaired-on'>Repaired on</label>
+      <input id='repaired-on' class='form-control' type='date' name='water_main_repair[repaired_on]' required [(ngModel)]='model.repaired_on' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='repaired-by'>Repaired by</label>
+      <input id='repaired-by' class='form-control' type='text' name='water_main_repair[repaired_by]' [(ngModel)]='model.repaired_by' />
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='main-type'>Type of Main</label>
+      <select id='main-type' class='form-control' name='water_main_repair[main_type]' [(ngModel)]='model.main_type'>
+        <option>AC</option>
+        <option>C-900</option>
+        <option>Ductile</option>
+        <option>Steele</option>
+      </select>
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='remarks'>Remarks</label>
+      <textarea id='remarks' class='form-control' name='water_main_repair[remarks]' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record repair
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>

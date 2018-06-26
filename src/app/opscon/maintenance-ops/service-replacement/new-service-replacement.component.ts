@@ -12,14 +12,14 @@ import { Subscription } from 'rxjs/Subscription';
 
 import config from '../../../app.config';
 import { SelectService, LoggerService } from '../../../shared/services';
-import { GateValve } from './gate-valve.model';
-import { GateValveCommon } from './gate-valve-common';
+import { ServiceReplacement } from './service-replacement.model';
+import { ServiceReplacementCommon } from './service-replacement-common';
 
 @Component({
-  templateUrl: 'new-gate-valve.component.html'
+  templateUrl: 'new-service-replacement.component.html'
 })
-export class NewGateValveComponent extends GateValveCommon implements OnInit, OnDestroy {
-  model: GateValve;
+export class NewServiceReplacementComponent extends ServiceReplacementCommon implements OnInit, OnDestroy {
+  model: ServiceReplacement;
 
   selectedTotal = 0;
   selectedFeatures: ol.Collection<ol.Feature>;
@@ -55,21 +55,21 @@ export class NewGateValveComponent extends GateValveCommon implements OnInit, On
     public router: Router
   ) {
     super(selectService, logger);
-    this.model = new GateValve();
+    this.model = new ServiceReplacement();
   }
 
   save (e) {
     this.submitBtn.nativeElement.disabled = true;
     let formData = new FormData(this.form.nativeElement);
 
-    formData.append('gate_valve[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
+    formData.append('service_replacement[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
     this.selectedFeatures.forEach(f => {
       let att = f.getProperties();
-      formData.append('system_valves[]', att.id);
+      formData.append('features[]', att.id);
     });
 
     this.http
-      .post(config.apiUrl + '/gate-valves.json', formData).toPromise()
+      .post(config.apiUrl + '/service-replacements.json', formData).toPromise()
       .then(this.handleSaveResult.bind(this))
       .catch(this.handleSaveError.bind(this));
   }
