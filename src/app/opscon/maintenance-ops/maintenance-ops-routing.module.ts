@@ -35,6 +35,8 @@ import { NewHotspotComponent } from './hotspot';
 
 import { NewValveExerciseComponent } from './valve-exercise';
 
+import { NewGateValveComponent } from './gate-valve';
+
 import { NewValveReplacementComponent } from './valve-replacement';
 
 import { SharedModule } from '../../shared/shared.module';
@@ -88,13 +90,19 @@ import { SharedModule } from '../../shared/shared.module';
           {
             path: 'manhole-inspection',
             component: NewManholeInspectionComponent,
-            data: { title: 'New Manhole Inspection', previous: '/maintenance-ops'}
+            data: { title: 'New Manhole Inspection', previous: '/maintenance-ops' }
           },
 
           {
             path: 'valve-exercise',
             component: NewValveExerciseComponent,
             data: { title: 'New Valve Exercise', previous: '/maintenance-ops' }
+          },
+
+          {
+            path: 'gate-valve',
+            component: NewGateValveComponent,
+            data: { title: 'New Gate Valve', previous: '/maintenance-ops' }
           },
 
           {
@@ -133,6 +141,7 @@ import { SharedModule } from '../../shared/shared.module';
     NewHotspotComponent,
 
     NewValveExerciseComponent,
+    NewGateValveComponent,
     NewValveReplacementComponent
   ],
   exports: [

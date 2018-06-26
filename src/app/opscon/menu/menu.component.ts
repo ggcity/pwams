@@ -44,10 +44,11 @@ export class MenuComponent {
     });
   }
 
-  // FIXME: Maybe MapService dataset subject should also return string name of 
+  // FIXME: Maybe MapService dataset subject should also return string name of
   // current dataset, so we can do away with this method.
   private setCurrentDataset (datasetName: string): void {
     this.mapService.setCurrentDataset(datasetName);
     this.currentDataset = datasetName;
+    this.logger.log(this.mapService.getCurrentDataset());
   }
 }

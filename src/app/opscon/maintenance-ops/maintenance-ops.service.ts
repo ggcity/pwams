@@ -38,6 +38,7 @@ export class MaintenanceOpsService {
       ],
 
       water: [
+        { name: 'Gate Valve', machineName: 'gate-valve', description: 'Inspect gate valves' },
         { name: 'Valve Exercise', machineName: 'valve-exercise', description: 'Track exercising records' },
         { name: 'Valve Replacement', machineName: 'valve-replacement', description: 'Generate valve replacement work order' },
         { name: 'Redline', machineName: 'redline', description: 'Markup map for corrections' }

@@ -1,0 +1,48 @@
+<section class='card-block'>
+  <form #form>
+    <fieldset class='form-group'>
+      <label for='gate-valve-inspected-on'>Inspected on</label>
+      <input id='gate-valve-inspected-on' class='form-control' type='date' name='gate_valve[inspected_on]' required [(ngModel)]='model.inspected_on' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='gate-valve-inspected-by'>Inspected by</label>
+      <input id='gate-valve-inspected-by' class='form-control' type='text' name='gate_valve[inspected_by]' [(ngModel)]='model.inspected_by' />
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='gate-valve-size'>Size</label>
+      <input id='gate-valve-size' class='form-control' type='number' name='gate_valve[size]' [(ngModel)]='model.size' />
+    </fieldset>
+
+    <fieldset class='form-group'>
+      <label for='gate-valve-valve-number'>Valve Number</label>
+      <input id='gate-valve-valve-number' class='form-control' type='text' name='gate_valve[valve_number]' [(ngModel)]='model.valve_number' />
+    </fieldset>
+    
+    <fieldset class='form-group'>
+      <label for='gate-valve-main-type'>Type of Main</label>
+      <input id='gate-valve-main-type' class='form-control' type='text' name='gate_valve[main_type]' [(ngModel)]='model.main_type' />
+    </fieldset>
+      
+    <fieldset class='form-group'>
+      <label for='gate-valve-remarks'>Remarks</label>
+      <textarea id='gate-valve-remarks' class='form-control' name='gate_valve[remarks]' [(ngModel)]='model.remarks' required></textarea>
+    </fieldset>
+    
+    <p>
+      <button #submitBtn id='gate-valve-submit-btn' type='submit' class='btn btn-primary ladda-button' data-style='expand-right' [disabled]='selectedTotal == 0' (click)="save($event)">
+        <i class='fa fa-arrow-circle-right fa-lg'></i>
+        Record gate valve
+      </button>
+      <a routerLink='..' class='btn btn-default'>Cancel</a>
+    </p>
+  
+    <p>
+      <span [ngClass]="{ 'text-success': (selectedTotal > 0), 'text-danger': (selectedTotal == 0) }">
+        <b>{{ selectedTotal }}</b>
+      </span>
+      features selected.
+    </p>
+  </form>
+</section>
