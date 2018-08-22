@@ -61,17 +61,24 @@ export class NewLineCleaningComponent extends LineCleaningCommon implements OnIn
   saveLineCleaning (e) {
     this.submitBtn.nativeElement.disabled = true;
     let formData = new FormData(this.form.nativeElement);
+    let dirty = false;
 
     formData.append('line_cleaning[extent]', JSON.stringify(this.selectService.getSelectedFeaturesExtent()));
     this.selectedFeatures.forEach(f => {
       let att = f.getProperties();
+
+      if (att.id === undefined) dirty = true;
       formData.append('pipes[]', att.id);
     });
 
-    this.http
-      .post(config.apiUrl + '/line-cleanings.json', formData).toPromise()
-      .then(this.handleSaveResult.bind(this))
-      .catch(this.handleSaveError.bind(this));
+    if (dirty) {
+      alert('Cannot get feature id! Not saving this record.');
+    } else {
+      this.http
+        .post(config.apiUrl + '/line-cleanings.json', formData).toPromise()
+        .then(this.handleSaveResult.bind(this))
+        .catch(this.handleSaveError.bind(this));
+    }
   }
 
   handleSaveResult (response) {

@@ -32,15 +32,18 @@ import { MapConfig }     from '../../map/map-config';
 })
 export class MenuComponent {
   public availableDatasets: Array<string>;
+  public defaultDataset: string;
   private currentDataset: string;
 
   constructor (
     private logger: LoggerService,
     private mapService: MapService
   ) {
+
     this.mapService.getMapConfig().then((def: MapConfig) => {
       this.availableDatasets = Object.keys(def.datasets);
-      this.currentDataset    = def.defaultDataset;
+      this.defaultDataset = def.defaultDataset;
+      this.currentDataset = this.mapService.getCurrentDatasetName() || this.defaultDataset;
     });
   }
 
@@ -49,6 +52,5 @@ export class MenuComponent {
   private setCurrentDataset (datasetName: string): void {
     this.mapService.setCurrentDataset(datasetName);
     this.currentDataset = datasetName;
-    this.logger.log(this.mapService.getCurrentDataset());
   }
 }

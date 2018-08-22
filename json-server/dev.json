@@ -36,7 +36,7 @@
       "sewer": [
         {
           "name": "Gravity Main",
-          "machineName": "ssgravitymain",
+          "machineName": "sewerGravityMains",
           "layerType": "vector",
           "source": {
             "type": "WFS",
@@ -46,7 +46,7 @@
           "style": {
             "styleType": "line",
             "stroke": {
-              "width": 4,
+              "width": 5,
               "color": [
                 50,
                 150,
@@ -59,7 +59,7 @@
         },
         {
           "name": "Manholes",
-          "machineName": "ssmanhole",
+          "machineName": "sewerManholes",
           "layerType": "vector",
           "source": {
             "type": "WFS",
@@ -68,7 +68,7 @@
           },
           "style": {
             "styleType": "point",
-            "radius": 6,
+            "radius": 7,
             "fill": [
               130,
               50,
@@ -131,37 +131,155 @@
           "machineName": "waterActiveMains",
           "layerType": "vector",
           "source": {
-            "type": "GeoJSON",
+            "type": "WFS",
             "url": "//www.ci.garden-grove.ca.us/geoserver/water/ows",
             "typeName": "water:mains"
           },
           "style": {
             "styleType": "line",
             "stroke": {
-              "width": 4,
+              "width": 5,
               "color": [
-                50,
-                150,
-                120,
+                25,
+                164,
+                249,
                 0.85
               ]
             }
+          },
+          "maxResolution": 5
+        },
+        {
+          "name": "System Valves",
+          "machineName": "waterSystemValves",
+          "layerType": "vector",
+          "source": {
+            "type": "WFS",
+            "url": "//www.ci.garden-grove.ca.us/geoserver/water/ows",
+            "typeName": "water:system_valves"
+          },
+          "style": {
+            "styleType": "point",
+            "radius": 7,
+            "fill": [
+              81,
+              134,
+              249,
+              0.9
+            ]
           },
           "maxResolution": 5
         }
       ]
     }
   },
-
-  "line-cleanings":
-[
- {"id":6,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":131.00,"percent_completed":null,"remarks":"Ran line 3 times heavy grit","cleaned_by":"ernier jessev","pipes":[11,10]}, 
- {"id":9,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":200.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[5258,5256,5256,5258,6537]}, 
- {"id":10,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-10-25T00:00:00","footage":245.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[5257,5257]}, 
- {"id":11,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2010-03-09T00:00:00","footage":300.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[5946,3730]}, 
- {"id":12,"grease":true,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2009-04-15T00:00:00","footage":300.00,"percent_completed":null,"remarks":"Ran line 2 times heavy grit","cleaned_by":"ernier jessev","pipes":[6497,6498]}, 
- {"id":100,"grease":false,"roots":false,"pipe_pieces":false,"egg_shells":true,"cctv":true,"cleaned_on":"2005-10-06T00:00:00","footage":200.00,"percent_completed":null,"remarks":"Need to spray for roaches","cleaned_by":"alexv jessev","pipes":[12,11]}]
-,
+  "line-cleanings": [
+    {
+      "id": 6,
+      "grease": true,
+      "roots": false,
+      "pipe_pieces": false,
+      "egg_shells": true,
+      "cctv": true,
+      "cleaned_on": "2010-10-25T00:00:00",
+      "footage": 131.00,
+      "percent_completed": null,
+      "remarks": "Ran line 3 times heavy grit",
+      "cleaned_by": "ernier jessev",
+      "pipes": [
+        11,
+        10
+      ]
+    },
+    {
+      "id": 9,
+      "grease": true,
+      "roots": false,
+      "pipe_pieces": false,
+      "egg_shells": true,
+      "cctv": true,
+      "cleaned_on": "2010-10-25T00:00:00",
+      "footage": 200.00,
+      "percent_completed": null,
+      "remarks": "Ran line 2 times heavy grit",
+      "cleaned_by": "ernier jessev",
+      "pipes": [
+        5258,
+        5256,
+        5256,
+        5258,
+        6537
+      ]
+    },
+    {
+      "id": 10,
+      "grease": true,
+      "roots": false,
+      "pipe_pieces": false,
+      "egg_shells": true,
+      "cctv": true,
+      "cleaned_on": "2010-10-25T00:00:00",
+      "footage": 245.00,
+      "percent_completed": null,
+      "remarks": "Ran line 2 times heavy grit",
+      "cleaned_by": "ernier jessev",
+      "pipes": [
+        5257,
+        5257
+      ]
+    },
+    {
+      "id": 11,
+      "grease": true,
+      "roots": false,
+      "pipe_pieces": false,
+      "egg_shells": true,
+      "cctv": true,
+      "cleaned_on": "2010-03-09T00:00:00",
+      "footage": 300.00,
+      "percent_completed": null,
+      "remarks": "Ran line 2 times heavy grit",
+      "cleaned_by": "ernier jessev",
+      "pipes": [
+        5946,
+        3730
+      ]
+    },
+    {
+      "id": 12,
+      "grease": true,
+      "roots": false,
+      "pipe_pieces": false,
+      "egg_shells": true,
+      "cctv": true,
+      "cleaned_on": "2009-04-15T00:00:00",
+      "footage": 300.00,
+      "percent_completed": null,
+      "remarks": "Ran line 2 times heavy grit",
+      "cleaned_by": "ernier jessev",
+      "pipes": [
+        6497,
+        6498
+      ]
+    },
+    {
+      "id": 100,
+      "grease": false,
+      "roots": false,
+      "pipe_pieces": false,
+      "egg_shells": true,
+      "cctv": true,
+      "cleaned_on": "2005-10-06T00:00:00",
+      "footage": 200.00,
+      "percent_completed": null,
+      "remarks": "Need to spray for roaches",
+      "cleaned_by": "alexv jessev",
+      "pipes": [
+        12,
+        11
+      ]
+    }
+  ],
   "layers": [
     {
       "id": "ssgravitymain",
